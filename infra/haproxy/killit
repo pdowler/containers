@@ -1,0 +1,6 @@
+#!/bin/bash
+
+SELF=$(basename $(pwd))
+
+docker container kill $SELF || exit
+

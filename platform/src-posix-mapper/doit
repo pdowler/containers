@@ -1,0 +1,34 @@
+#!/bin/bash
+
+SELF=$(basename $(pwd))
+IMG=posix-mapper:latest
+IMG="images.opencadc.org/platform/posix-mapper:0.3.1"
+
+. $HOME/bin/docker-static-ip $SELF
+echo "DOCKER_STATIC_IP: $DOCKER_STATIC_IP"
+echo "      DOCKER_NET: $DOCKER_NET"
+
+\rm -f tomcat.log && touch tomcat.log
+
+HAP=haproxy.cadc.dao.nrc.ca
+HAPIP=$(grep $HAP /etc/hosts | awk '{print $1}')
+
+PG=srcnodedb
+PGIP=$(lxc list | grep $PG | awk '{print $6}')
+
+## YES: runs as root internally
+CMD="docker run --rm --user root:root \
+    --network=$DOCKER_NET --ip=$DOCKER_STATIC_IP \
+    --add-host $HAP:$HAPIP \
+    --add-host $PG:$PGIP \
+    --volume=$(pwd)/config:/config:ro \
+    --name $SELF $IMG"
+
+echo $CMD
+
+exec $CMD >& tomcat.log &
+
+if [ "$1" = "-f" ]; then
+    exec tail -100f tomcat.log
+fi
+

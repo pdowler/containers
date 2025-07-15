@@ -1,0 +1,14 @@
+#!/bin/bash
+
+SELF=$1
+
+export DOCKER_NET=docker26
+if [[ "$SELF" == "haproxy" ]]; then
+  export DOCKER_STATIC_IP=172.26.0.2
+else
+  LINE=$(docker exec haproxy grep 8080 /config/haproxy.cfg | grep $SELF)
+  export DOCKER_STATIC_IP=$(echo $LINE | awk '{print $3}' | awk -F ':' '{print $1}')
+fi
+
+echo "$SELF: $DOCKER_STATIC_IP"
+

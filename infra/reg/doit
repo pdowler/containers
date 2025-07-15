@@ -1,0 +1,30 @@
+#!/bin/bash
+
+SELF=$(basename $(pwd))
+#IMG=reg:latest
+IMG="images.opencadc.org/core/reg:1.2.0"
+
+. $HOME/bin/docker-static-ip $SELF
+echo "DOCKER_STATIC_IP: $DOCKER_STATIC_IP"
+echo "      DOCKER_NET: $DOCKER_NET"
+
+HAP=haproxy.cadc.dao.nrc.ca
+HAPIP=$(grep $HAP /etc/hosts | awk '{print $1}')
+
+CMD="docker run --rm --user tomcat:tomcat \
+	--network=$DOCKER_NET --ip=$DOCKER_STATIC_IP \
+	--add-host $HAP:$HAPIP \
+	--volume=$(pwd)/config:/config:ro \
+	--volume=$(pwd)/cadc-content:/content:ro \
+        --name $SELF $IMG"
+
+echo $CMD
+
+\rm -f tomcat.log 
+
+exec $CMD >& tomcat.log &
+
+if [ "$1" = "-f" ]; then
+    tail -100f tomcat.log
+fi
+
