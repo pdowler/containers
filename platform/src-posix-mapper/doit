@@ -2,7 +2,7 @@
 
 SELF=$(basename $(pwd))
 IMG=posix-mapper:latest
-IMG="images.opencadc.org/platform/posix-mapper:0.3.1"
+IMG="images.opencadc.org/platform/posix-mapper:0.3.2"
 
 . $HOME/bin/docker-static-ip $SELF
 echo "DOCKER_STATIC_IP: $DOCKER_STATIC_IP"
