@@ -8,7 +8,7 @@ echo "DOCKER_STATIC_IP: $DOCKER_STATIC_IP"
 echo "      DOCKER_NET: $DOCKER_NET"
 
 PG=torkeep25
-PGIP=$(lxc list | grep $PG | awk '{print $6}')
+PGIP=$(docker-find-ip $PG)
 
 HAP=haproxy.cadc.dao.nrc.ca
 HAPIP=$(grep $HAP /etc/hosts | awk '{print $1}')

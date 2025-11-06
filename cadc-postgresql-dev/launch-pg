@@ -1,0 +1,15 @@
+#!/bin/bash
+
+INIT=$1
+DBNAME=$2
+
+if [ -z "$DBNAME" ]; then
+    echo "usage: $0 {init-file} {db container name}"
+    exit 1
+fi
+
+docker run -d \
+    --mount type=bind,source=$(pwd)/${INIT},target=/config/init-content-schemas.sh,readonly \
+    --name $DBNAME \
+    images.opencadc.org/dev-only/cadc-postgresql-dev:1
+

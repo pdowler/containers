@@ -11,9 +11,7 @@ $HOME/bin/docker-common-setup
 \cp $HOME/.ssl/cadcproxy.pem config/
 
 PG=caom2db
-PGIP=$(lxc list | grep $PG | awk '{print $6}')
-
-PG=caom2db
+PGIP=$(docker-find-ip $PG)
 
 CMD="docker run --rm --user $RUSER \
 	--add-host $PG:$PGIP \

@@ -1,0 +1,21 @@
+#!/bin/bash
+
+PG=$1
+
+if [ "$DBCONTAINER" == "incus" ]; then
+    PGIP=$(incus list $PG | grep $PG | awk '{print $6}')
+    echo $PGIP
+    exit 0
+fi
+
+if [ "$DBCONTAINER" == "docker" ]; then
+    PGIP=$(docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $PG)
+    echo $PGIP
+    exit 0
+fi
+
+if [ "$DBCONTAINER" == "etc" ]; then
+    PGIP=$(grep $PG /etc/hosts | awk '{print $1}')
+    echo $PGIP
+    exit 0
+fi

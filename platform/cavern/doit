@@ -21,7 +21,7 @@ HAP=haproxy.cadc.dao.nrc.ca
 HAPIP=$(grep $HAP /etc/hosts | awk '{print $1}')
 
 PG=caverndb
-PGIP=$(lxc list | grep $PG | awk '{print $6}')
+PGIP=$(docker-find-ip $PG)
 
 ## YES: runs as root internally
 CMD="docker run --rm --user root:root \
