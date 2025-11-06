@@ -1,12 +1,11 @@
 # containers
-This is my standard deployment of containers for development and local
-testing. 
+This is my standard deployment of containers for development and local testing. 
 
 One time:
-1. create docker26 subnet
-2. copy scripts/docker-static-ip into $HOME/bin
-2. add a server cert to infra/haproxy
-3. add haproxy server name (matching cert) to /etc/hosts (haproxy.cadc.dao.nrc.ca for me)
+1. run `docker-create-net` to create docker26 subnet (one time)
+2. cp other scripts/docker-* into $HOME/bin
+3. put the HAProxy server cert in ~/work/etc/dev-server-cert.pem
+4. add `172.26.0.2 haproxy.cadc.dao.nrc.ca` to /etc/hosts
 
 The haproxy server name also appears in:
 * infra/reg/config/reg-resource-caps.properties (for local services)
@@ -18,7 +17,7 @@ mapping to the service container.
 
 To start things:
 1. start haproxy container (./doit)
-2. start `reg` (./doit of ./doit -f), uses `docker-static-ip` to get their IP from the haproxy instance
+2. start `reg` (./doit or ./doit -f), uses `docker-static-ip` to get their IP from the haproxy instance
 3. start other containers...
 
 To check:
