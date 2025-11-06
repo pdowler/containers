@@ -1,0 +1,9 @@
+#!/bin/bash
+
+echo "import cacerts..."
+rsync -avu $HOME/work/etc/cacerts config/
+
+echo "import secrets..."
+\cp ~/work/etc/RsaSignaturePub.key config/
+\cp ~/work/test-certificates/servops.pem config/cadcproxy.pem
+

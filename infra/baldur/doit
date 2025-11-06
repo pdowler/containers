@@ -3,8 +3,7 @@
 SELF=$(basename $(pwd))
 IMG="baldur:latest"
 
-\cp ~/work/etc/RsaSignaturePub.key config/
-\cp ~/work/test-certificates/servops.pem config/cadcproxy.pem
+$HOME/bin/docker-common-setup
 
 . $HOME/work/bin/docker-static-ip $SELF
 echo "DOCKER_STATIC_IP: $DOCKER_STATIC_IP"

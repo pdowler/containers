@@ -3,8 +3,8 @@
 SELF=$(basename $(pwd))
 IMG=cred:latest
 
-\cp ~/work/etc/RsaSignaturePub.key config/
-\cp ~/work/test-certificates/servops.pem config/cadcproxy.pem
+$HOME/bin/docker-common-setup
+
 \cp ~/work/etc/signcert.pem config/
 
 . $HOME/work/bin/docker-static-ip $SELF

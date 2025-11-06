@@ -7,8 +7,6 @@ IMG=torkeep:latest
 echo "DOCKER_STATIC_IP: $DOCKER_STATIC_IP"
 echo "      DOCKER_NET: $DOCKER_NET"
 
-\rm -f tomcat.log && touch tomcat.log
-
 PG=torkeep25
 PGIP=$(lxc list | grep $PG | awk '{print $6}')
 

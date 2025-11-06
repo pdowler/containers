@@ -8,6 +8,7 @@ IMG="images.opencadc.org/dev-only/cadc-haproxy-dev:1"
 echo "DOCKER_STATIC_IP: $DOCKER_STATIC_IP"
 echo "      DOCKER_NET: $DOCKER_NET"
 
+$HOME/bin/docker-common-setup
 \cp $HOME/work/etc/dev-server-cert.pem config/server-cert.pem
 
 EXPOSE=""
