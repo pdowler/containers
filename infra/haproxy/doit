@@ -8,7 +8,10 @@ IMG="images.opencadc.org/dev-only/cadc-haproxy-dev:1"
 echo "DOCKER_STATIC_IP: $DOCKER_STATIC_IP"
 echo "      DOCKER_NET: $DOCKER_NET"
 
-EXPOSE="-p 443:443"
+\cp $HOME/work/etc/dev-server-cert.pem config/server-cert.pem
+
+EXPOSE=""
+#EXPOSE="-p 443:443"
 
 CMD="docker run --rm --user root:root $EXPOSE --network=$DOCKER_NET --ip=$DOCKER_STATIC_IP \
 	--volume=$(pwd)/config:/config:ro \
