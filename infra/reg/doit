@@ -9,6 +9,8 @@ echo "DOCKER_STATIC_IP: $DOCKER_STATIC_IP"
 echo "      DOCKER_NET: $DOCKER_NET"
 
 $HOME/bin/docker-common-setup
+## not actually needed
+\rm config/cadcproxy.pem
 
 HAP=haproxy.cadc.dao.nrc.ca
 HAPIP=$(grep $HAP /etc/hosts | awk '{print $1}')
