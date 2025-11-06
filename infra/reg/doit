@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SELF=$(basename $(pwd))
-#IMG=reg:latest
+IMG=reg:latest
 IMG="images.opencadc.org/core/reg:1.2.0"
 
 . $HOME/bin/docker-static-ip $SELF
