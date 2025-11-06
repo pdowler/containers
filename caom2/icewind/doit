@@ -1,0 +1,27 @@
+#!/bin/bash
+
+SELF=$(basename $(pwd))
+IMG=icewind:latest
+
+LOG=${SELF}.log
+RUSER=opencadc:opencadc
+
+\rm -f config/cadcproxy.pem
+cp $HOME/.ssl/cadcproxy.pem config/
+
+\rm -f $LOG
+
+PG=caom2db
+PGIP=$(lxc list | grep $PG | awk '{print $6}')
+
+PG=caom2db
+
+CMD="docker run --rm --user $RUSER \
+	--add-host $PG:$PGIP \
+	--volume=$(pwd)/config:/config:ro \
+	--name  $SELF $IMG"
+
+echo $CMD
+
+$CMD
+
