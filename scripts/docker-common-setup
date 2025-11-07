@@ -3,7 +3,7 @@
 echo "import cacerts..."
 rsync -avu $HOME/work/etc/cacerts config/
 
-if [ "$1" == "nosecrets" ];
+if [ "$1" == "nosecrets" ]; then
   exit 0
 fi
 
