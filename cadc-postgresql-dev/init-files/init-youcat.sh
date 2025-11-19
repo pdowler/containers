@@ -1,2 +1,3 @@
-CATALOGS="content"
+CATALOGS="cadctest"
 SCHEMAS=""
+ADMIN=tapadm

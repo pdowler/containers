@@ -1,5 +1,8 @@
 #!/bin/bash
 
+IMG=cadc-postgresql-dev:latest
+#IMG="images.opencadc.org/dev-only/cadc-postgresql-dev:1"
+
 INIT=$1
 DBNAME=$2
 
@@ -8,8 +11,15 @@ if [ -z "$DBNAME" ]; then
     exit 1
 fi
 
-docker run -d \
+DOCKER_NET=docker26
+DBIP=$(DBCONTAINER=etc docker-find-ip $DBNAME)
+
+CMD="docker run -d \
+    --network=$DOCKER_NET --ip=$DBIP \
     --mount type=bind,source=$(pwd)/${INIT},target=/config/init-content-schemas.sh,readonly \
-    --name $DBNAME \
-    images.opencadc.org/dev-only/cadc-postgresql-dev:1
+    --name $DBNAME $IMG"
+
+echo $CMD
+
+eval $CMD
 

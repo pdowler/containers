@@ -1,0 +1,71 @@
+# everything after a # is a comment
+
+# implicit CAOM-2.5 model requirements: safe to list here or omit
+Observation.collection
+Observation.uri
+Observation.algorithm
+Algorithm.name
+Plane.uri
+Artifact.uri
+Artifact.productType
+Artifact.releaseType
+
+## extended requirements for SKA observations
+
+# if these are missing or in the future, metadata is private
+Observation.metaRelease 
+Plane.metaRelease
+
+Observation.planes # require at least one plane per observation
+Plane.artifacts # require at least one artifact per plane
+
+# observation metadata needed to match complete ObsCore
+Observation.telescope
+#Telescope.name
+Observation.instrument
+#Instrument.name
+
+# plane metadata needed to match complete ObsCore + radio extension drafts
+Plane.calibrationLevel
+Plane.dataProductType
+Plane.observable
+#Observable.ucd
+
+Plane.position
+#Position.bounds
+#Position.samples
+Position.minBounds
+Position.resolution
+Position.resolutionBounds
+Position.dimension
+Position.maxRecoverableScale
+
+Plane.energy
+#Energy.bounds
+#Energy.samples
+Energy.resolvingPower
+Energy.resolution
+Energy.resolutionBounds
+Energy.dimension
+
+Plane.time
+#Time.bounds
+#Time.samples
+Time.exposure
+Time.exposureBounds
+Time.resolution
+Time.resolutionBounds
+Time.dimension
+
+Plane.polarization
+#Polarization.states
+Polarization.dimension
+
+Plane.visibility
+#Visibility.distance
+#Visibility.distributionEccentricity
+#Visibility.distributionFill
+
+# require additional artifact metadata to support DataLink implementation
+Artifact.contentType
+Artifact.contentLength
