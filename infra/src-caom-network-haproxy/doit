@@ -1,0 +1,23 @@
+#!/bin/bash
+
+SELF=$(basename $(pwd))
+IMG="cadc-haproxy-dev:latest"
+IMG="images.opencadc.org/dev-only/cadc-haproxy-dev:1"
+
+DOCKER_STATIC_IP="172.40.0.9"
+DOCKER_NET="src-caom-network"
+
+\cp $HOME/work/etc/dev-server-cert.pem config/server-cert.pem
+
+EXPOSE=""
+#EXPOSE="-p 443:443"
+
+CMD="docker run --rm --user root:root $EXPOSE --network=$DOCKER_NET --ip=$DOCKER_STATIC_IP \
+	--volume=$(pwd)/config:/config:ro \
+	--name $SELF $IMG"
+        
+echo $CMD
+
+$CMD >& haproxy.log & 
+
+
