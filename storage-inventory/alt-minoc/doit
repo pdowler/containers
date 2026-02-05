@@ -4,7 +4,11 @@ SELF=$(basename $(pwd))
 IMG=minoc:latest
 #IMG="images.opencadc.org/storage-inventory/minoc:1.0.7"
 
-. $HOME/work/bin/docker-static-ip $SELF
+$HOME/bin/docker-common-setup
+\cp $HOME/config/cadc-storage-adapter-swift.properties config/
+chmod 664 config/cadc-storage-adapter-swift.properties
+
+. $HOME/bin/docker-static-ip $SELF
 echo "DOCKER_STATIC_IP: $DOCKER_STATIC_IP"
 echo "      DOCKER_NET: $DOCKER_NET"
 
@@ -12,12 +16,10 @@ DATADIR=$(pwd)/storage
 mkdir -p $DATADIR
 setfacl -m user:8675309:rwx $DATADIR
 
-\cp ~/work/test-certificates/servops.pem config/cadcproxy.pem
-   
-\rm -f tomcat.log && touch tomcat.log
+\rm -f tomcat.log
 
 PG=pg15-minoc
-PGIP=$(lxc list | grep $PG | awk '{print $6}')
+PGIP=$(docker-find-ip $PG)
 
 HAP=haproxy.cadc.dao.nrc.ca
 HAPIP=$(grep $HAP /etc/hosts | awk '{print $1}')
