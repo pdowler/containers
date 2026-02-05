@@ -1,7 +1,9 @@
 #!/bin/bash
 
-echo "import cacerts..."
-rsync -avu $HOME/work/etc/cacerts config/
+BASE=$(git rev-parse --show-toplevel)
+
+echo "import common config..."
+rsync -avuc $BASE/config/ config/
 
 if [ "$1" == "nosecrets" ]; then
   exit 0
