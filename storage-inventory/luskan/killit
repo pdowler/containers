@@ -1,0 +1,6 @@
+#!/bin/bash
+
+SELF=luskan
+
+docker container kill $SELF || exit
+

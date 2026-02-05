@@ -1,0 +1,40 @@
+#!/bin/bash
+
+SELF=$(basename $(pwd))
+IMG=minoc:latest
+#IMG="images.opencadc.org/storage-inventory/minoc:1.0.7"
+
+. $HOME/work/bin/docker-static-ip $SELF
+echo "DOCKER_STATIC_IP: $DOCKER_STATIC_IP"
+echo "      DOCKER_NET: $DOCKER_NET"
+
+DATADIR=$(pwd)/storage
+mkdir -p $DATADIR
+setfacl -m user:8675309:rwx $DATADIR
+
+\cp ~/work/test-certificates/servops.pem config/cadcproxy.pem
+   
+\rm -f tomcat.log && touch tomcat.log
+
+PG=pg15-minoc
+PGIP=$(lxc list | grep $PG | awk '{print $6}')
+
+HAP=haproxy.cadc.dao.nrc.ca
+HAPIP=$(grep $HAP /etc/hosts | awk '{print $1}')
+
+
+CMD="docker run --rm --user tomcat:tomcat \
+    --network=$DOCKER_NET --ip=$DOCKER_STATIC_IP \
+    --add-host $HAP:$HAPIP \
+    --add-host $PG:$PGIP \
+    --volume=$(pwd)/config:/config:ro \
+    --volume=${DATADIR}:/data:rw \
+    --name $SELF $IMG"
+
+echo $CMD
+exec $CMD >& tomcat.log &
+
+if [ "$1" = "-f" ]; then
+    tail -100f tomcat.log
+fi
+

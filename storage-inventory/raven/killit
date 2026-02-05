@@ -1,0 +1,6 @@
+#!/bin/bash
+
+SELF=raven
+
+docker container kill $SELF || exit
+

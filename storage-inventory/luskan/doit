@@ -1,0 +1,35 @@
+#!/bin/bash
+
+SELF=$(basename $(pwd))
+IMG=luskan:latest
+
+. $HOME/work/bin/docker-static-ip $SELF
+echo "DOCKER_STATIC_IP: $DOCKER_STATIC_IP"
+echo "      DOCKER_NET: $DOCKER_NET"
+
+\cp $A/test-certificates/servops.pem config/cadcproxy.pem
+\cp $A/test-certificates/tmpops.pem config/tmpops.pem   
+
+\rm -f tomcat.log && touch tomcat.log
+
+PG=pg15test
+PGIP=$(grep $PG /etc/hosts | head -1 | awk '{print $1}')
+
+HAP=haproxy.cadc.dao.nrc.ca
+HAPIP=$(grep $HAP /etc/hosts | awk '{print $1}')
+
+CMD="docker run --rm --user tomcat:tomcat \
+	--network=$DOCKER_NET --ip=$DOCKER_STATIC_IP \
+	--add-host $PG:$PGIP \
+	--add-host $HAP:$HAPIP \
+        --volume=$(pwd)/config:/config:ro \
+        --name $SELF $IMG"
+
+echo $CMD
+
+exec $CMD >& tomcat.log &
+
+if [ "$1" = "-f" ]; then
+    tail -100f tomcat.log
+fi
+
