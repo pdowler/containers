@@ -7,6 +7,7 @@ IMG=minoc:latest
 $HOME/bin/docker-common-setup
 \cp $HOME/config/cadc-storage-adapter-swift.properties config/
 chmod 664 config/cadc-storage-adapter-swift.properties
+echo "org.opencadc.inventory.storage.swift.SwiftStorageAdapter.segmentMinBytes = 10" >> config/cadc-storage-adapter-swift.properties
 
 . $HOME/bin/docker-static-ip $SELF
 echo "DOCKER_STATIC_IP: $DOCKER_STATIC_IP"
