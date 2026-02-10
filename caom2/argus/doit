@@ -4,6 +4,7 @@ SELF=$(basename $(pwd))
 IMG="argus:latest"
 
 $HOME/bin/docker-common-setup
+\cp $HOME/work/test-certificates/tmpops.pem config/
 
 . $HOME/bin/docker-static-ip $SELF
 echo "DOCKER_STATIC_IP: $DOCKER_STATIC_IP"
