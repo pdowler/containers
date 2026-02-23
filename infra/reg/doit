@@ -2,18 +2,16 @@
 
 SELF=$(basename $(pwd))
 IMG=reg:latest
-IMG="images.opencadc.org/core/reg:1.2.0"
+IMG="images.opencadc.org/core/reg:1.2.1"
+
+. $HOME/bin/docker-common-setup
 
 . $HOME/bin/docker-static-ip $SELF
-echo "DOCKER_STATIC_IP: $DOCKER_STATIC_IP"
-echo "      DOCKER_NET: $DOCKER_NET"
 
-$HOME/bin/docker-common-setup
-## not actually needed
-\rm config/cadcproxy.pem
-
-HAP=haproxy.cadc.dao.nrc.ca
-HAPIP=$(grep $HAP /etc/hosts | awk '{print $1}')
+echo "mangling reg-resource-caps config..."
+cat config/reg-resource-caps.base | sed "s/PROXYNAME/$HAP/g" > config/reg-resource-caps.properties
+grep 'ivo://opencadc.org/reg' config/reg-resource-caps.properties
+echo "..."
 
 CMD="docker run --rm --user tomcat:tomcat \
 	--network=$DOCKER_NET --ip=$DOCKER_STATIC_IP \
@@ -23,8 +21,6 @@ CMD="docker run --rm --user tomcat:tomcat \
         --name $SELF $IMG"
 
 echo $CMD
-
-\rm -f tomcat.log 
 
 exec $CMD >& tomcat.log &
 

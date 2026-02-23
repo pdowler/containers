@@ -1,0 +1,85 @@
+#
+# This file maps resource identifiers to the location of capability
+# information.
+#
+ivo://opencadc.org/reg = https://PROXYNAME/reg/capabilities
+
+## AAI
+ivo://opencadc.org/gms = https://PROXYNAME/ac/capabilities
+
+## storage inventory
+ivo://opencadc.org/baldur = https://PROXYNAME/baldur/capabilities
+ivo://opencadc.org/luskan = https://PROXYNAME/luskan/capabilities
+ivo://opencadc.org/raven = https://PROXYNAME/raven/capabilities
+ivo://opencadc.org/minoc = https://PROXYNAME/minoc/capabilities
+ivo://opencadc.org/alt/minoc = https://PROXYNAME/alt/minoc/capabilities
+ivo://opencadc.org/vault = https://PROXYNAME/site/vault/capabilities
+ivo://opencadc.org/site/minoc = https://PROXYNAME/site/minoc/capabilities
+## raven intTest support - 2 and 3 must be different services for test to work
+ivo://negotiation-test-site1 = https://PROXYNAME/minoc/capabilities
+ivo://negotiation-test-site2 = https://PROXYNAME/minoc/capabilities
+ivo://negotiation-test-site3 = https://PROXYNAME/alt/minoc/capabilities
+
+## minoc integration test setup copies files from production vault, so we need this:
+ivo://cadc.nrc.ca/vault = https://ws-cadc.canfar.net/vault/capabilities
+
+ivo://opencadc.org/cred = https://PROXYNAME/cred/capabilities
+ivo://opencadc.org/cavern = https://PROXYNAME/cavern/capabilities
+ivo://opencadc.org/youcat = https://PROXYNAME/youcat/capabilities
+# currently needed by youcat integration test code:
+ivo://cadc.nrc.ca/cadc/minoc = https://ws-cadc.canfar.net/minoc/capabilities
+
+## caom2 local testing
+ivo://opencadc.org/torkeep = https://PROXYNAME/torkeep/capabilities
+ivo://opencadc.org/argus = https://PROXYNAME/argus/capabilities
+ivo://opencadc.org/bifrost = https://PROXYNAME/bifrost/capabilities
+ivo://opencadc.org/dap = https://PROXYNAME/dap/capabilities
+ivo://opencadc.org/sia = https://PROXYNAME/sia/capabilities
+ivo://cadc.nrc.ca/caom2ops = https://PROXYNAME/caom2ops/capabilities
+
+ivo://cadc.nrc.ca/sc2tap = https://PROXYNAME/argus/capabilities
+ivo://cadc.nrc.ca/sc2meta = https://PROXYNAME/sc2meta/capabilities
+
+
+# CAOM-2.5
+ivo://opencadc.org/caom25/torkeep = https://PROXYNAME/caom25/torkeep/capabilities
+ivo://opencadc.org/caom25/argus = https://PROXYNAME/caom25/argus/capabilities
+ivo://opencadc.org/caom25/bifrost = https://PROXYNAME/caom25/bifrost/capabilities
+
+## OIDC testing using SRCNet IAM
+ivo://opencadc.org/src/cavern = https://PROXYNAME/src/cavern/capabilities
+ivo://opencadc.org/src/posix-mapper = https://PROXYNAME/src/posix-mapper/capabilities
+ivo://opencadc.org/src/youcat = https://PROXYNAME/src/youcat/capabilities
+ivo://opencadc.org/src/argus = https://PROXYNAME/src/argus/capabilities
+ivo://opencadc.org/src/bifrost = https://PROXYNAME/src/bifrost/capabilities
+ivo://opencadc.org/src/torkeep = https://PROXYNAME/src/torkeep/capabilities
+
+
+## hybrid environment most of the time
+# note rely on multiple reg in cadc-registry.properties works bug logs lots of WARN
+ivo://cadc.nrc.ca/gms = https://ws-cadc.canfar.net/ac/capabilities
+#ivo://cadc.nrc.ca/gms = https://PROXYNAME/ac/capabilities
+ivo://cadc.nrc.ca/cred = https://ws.cadc-ccda.hia-iha.nrc-cnrc.gc.ca/cred/capabilities
+#ivo://cadc.nrc.ca/cred = https://PROXYNAME/cred/capabilities
+
+## external services I want to find
+ivo://skao.int/reg = https://spsrc27.iaa.csic.es/reg/capabilities
+ivo://skao.int/gms = https://permissions.srcnet.skao.int/api/v1/gms/capabilities
+ivo://skao.int/tap = https://dachs.ivoa.srcnet.skao.int/tap/capabilities
+
+## local ams repo
+ivo://cadc.nrc.ca/ams = https://PROXYNAME/ams/capabilities
+## ams tap service endpoints
+ivo://cadc.nrc.ca/ams/alma = https://PROXYNAME/ams/alma/capabilities
+ivo://cadc.nrc.ca/ams/cfht = https://PROXYNAME/ams/cfht/capabilities
+ivo://cadc.nrc.ca/ams/cirada = https://PROXYNAME/ams/cirada/capabilities
+ivo://cadc.nrc.ca/ams/dao = https://PROXYNAME/ams/dao/capabilities
+ivo://cadc.nrc.ca/ams/drao = https://PROXYNAME/ams/drao/capabilities
+ivo://cadc.nrc.ca/ams/eao = https://PROXYNAME/ams/eao/capabilities
+ivo://cadc.nrc.ca/ams/gemini = https://PROXYNAME/ams/gemini/capabilities
+ivo://cadc.nrc.ca/ams/ngvs = https://PROXYNAME/ams/ngvs/capabilities
+ivo://cadc.nrc.ca/ams/maq = https://PROXYNAME/ams/maq/capabilities
+ivo://cadc.nrc.ca/ams/mast = https://PROXYNAME/ams/mast/capabilities
+ivo://cadc.nrc.ca/ams/omm = https://PROXYNAME/ams/omm/capabilities
+ivo://cadc.nrc.ca/ams/shared = https://PROXYNAME/ams/shared/capabilities
+
