@@ -1,8 +1,10 @@
 #!/bin/bash
 
 SELF=$(basename $(pwd))
-#IMG=torkeep:latest
+IMG=torkeep:latest
 IMG="images.opencadc.org/caom2/torkeep:2.0-BETA"
+
+. $HOME/bin/docker-common-setup SRC
 
 . $HOME/bin/docker-static-ip $SELF
 echo "DOCKER_STATIC_IP: $DOCKER_STATIC_IP"
@@ -10,9 +12,6 @@ echo "      DOCKER_NET: $DOCKER_NET"
 
 PG=torkeep25db
 PGIP=$(docker-find-ip $PG)
-
-HAP=haproxy.cadc.dao.nrc.ca
-HAPIP=$(grep $HAP /etc/hosts | awk '{print $1}')
 
 CMD="docker run --rm --user tomcat:tomcat \
 	--network=$DOCKER_NET --ip=$DOCKER_STATIC_IP \

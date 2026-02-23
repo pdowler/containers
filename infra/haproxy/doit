@@ -4,11 +4,10 @@ SELF=$(basename $(pwd))
 IMG="cadc-haproxy-dev:latest"
 IMG="images.opencadc.org/dev-only/cadc-haproxy-dev:1"
 
-. $HOME/bin/docker-static-ip $SELF
-echo "DOCKER_STATIC_IP: $DOCKER_STATIC_IP"
-echo "      DOCKER_NET: $DOCKER_NET"
+. $HOME/bin/docker-common-setup nosecrets
 
-$HOME/bin/docker-common-setup nosecrets
+. $HOME/bin/docker-static-ip $SELF
+
 \cp $HOME/work/etc/dev-server-cert.pem config/server-cert.pem
 
 EXPOSE=""
