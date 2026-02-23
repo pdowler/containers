@@ -1,12 +1,14 @@
 #!/bin/bash
 
+BASE=$(git rev-parse --show-toplevel)
+
 SELF=$(basename $(pwd))
 IMG="cadc-haproxy-dev:latest"
 IMG="images.opencadc.org/dev-only/cadc-haproxy-dev:1"
 
-. $HOME/bin/docker-common-setup nosecrets
-
 . $HOME/bin/docker-static-ip $SELF
+
+rsync -avuc $BASE/config/cacerts config/
 
 \cp $HOME/work/etc/dev-server-cert.pem config/server-cert.pem
 

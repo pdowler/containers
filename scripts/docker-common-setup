@@ -10,11 +10,17 @@ else
 fi
 rsync -avuc $CF/ config/
 
+
+
 echo "local haproxy setup..."
 HAP=$(grep haproxy /etc/hosts | awk '{print $2}')
 HAPIP=$(grep haproxy /etc/hosts | awk '{print $1}')
 echo "$HAP -> $HAPIP"
 export HAP HAPIP
+
+echo "adding local reg..."
+LOC="https://$HAP/reg"
+sed -i "s|LOCALREG|$LOC|g" config/cadc-registry.properties
 
 if [ "$1" == "nosecrets" ]; then
   exit 0
