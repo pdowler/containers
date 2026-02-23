@@ -5,6 +5,12 @@ BASE=$(git rev-parse --show-toplevel)
 echo "import common config..."
 rsync -avuc $BASE/config/ config/
 
+echo "local haproxy setup..."
+HAP=$(grep haproxy /etc/hosts | awk '{print $2}')
+HAPIP=$(grep haproxy /etc/hosts | awk '{print $1}')
+echo "$HAP -> $HAPIP"
+export HAP HAPIP
+
 if [ "$1" == "nosecrets" ]; then
   exit 0
 fi

@@ -10,5 +10,5 @@ else
   export DOCKER_STATIC_IP=$(echo $LINE | awk '{print $3}' | awk -F ':' '{print $1}')
 fi
 
-echo "$SELF: $DOCKER_STATIC_IP"
+echo "$SELF: $DOCKER_STATIC_IP in network $DOCKER_NET"
 
