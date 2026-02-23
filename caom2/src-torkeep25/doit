@@ -1,14 +1,12 @@
 #!/bin/bash
 
 SELF=$(basename $(pwd))
-IMG=torkeep:latest
-IMG="images.opencadc.org/caom2/torkeep:2.0-BETA"
+IMG=torkeep:caom25
+IMG="images.opencadc.org/caom2/torkeep:2.0-BETA-05"
 
 . $HOME/bin/docker-common-setup SRC
 
 . $HOME/bin/docker-static-ip $SELF
-echo "DOCKER_STATIC_IP: $DOCKER_STATIC_IP"
-echo "      DOCKER_NET: $DOCKER_NET"
 
 PG=torkeep25db
 PGIP=$(docker-find-ip $PG)
