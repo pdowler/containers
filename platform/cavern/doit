@@ -4,11 +4,13 @@ SELF=$(basename $(pwd))
 IMG=cavern:latest
 #IMG="images.opencadc.org/platform/cavern:0.7.5"
 
-. $HOME/bin/docker-static-ip $SELF
-echo "DOCKER_STATIC_IP: $DOCKER_STATIC_IP"
-echo "      DOCKER_NET: $DOCKER_NET"
+. $HOME/bin/docker-common-setup
 
-$HOME/bin/docker-common-setup
+. $HOME/bin/docker-static-ip $SELF
+
+echo "append posixmapper config..."
+echo "http://www.opencadc.org/std/posix#group-mapping-0.1 = ivo://cadc.nrc.ca/gms" >> config/cadc-registry.properties
+echo "http://www.opencadc.org/std/posix#user-mapping-0.1 = ivo://cadc.nrc.ca/gms" >> config/cadc-registry.properties
 
 DATADIR=/data/local/cavern
 if [ ! -d $DATADIR ]; then
@@ -16,9 +18,6 @@ if [ ! -d $DATADIR ]; then
     exit 1
 fi
 EXTRADIR=/data/local/junk
-
-HAP=haproxy.cadc.dao.nrc.ca
-HAPIP=$(grep $HAP /etc/hosts | awk '{print $1}')
 
 PG=caverndb
 PGIP=$(docker-find-ip $PG)

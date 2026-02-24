@@ -1,6 +1,6 @@
 #!/bin/bash
 
-HAP=$(grep haproxy /etc/hosts | awk '{print $2}')
+HAP=$(grep haproxy /etc/hosts | grep -v haproxy.local | awk '{print $2}')
 
 CMD="curl -s https://$HAP/reg/resource-caps"
 

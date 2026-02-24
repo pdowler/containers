@@ -1,25 +1,21 @@
 #!/bin/bash
 
 SELF=$(basename $(pwd))
-IMG=minoc:latest
+IMG=vault:latest
+#IMG="images.opencadc.org/storage-inventory/minoc:1.0.7"
 
 . $HOME/bin/docker-common-setup
 
-. $HOME/work/bin/docker-static-ip $SELF
-
-DATADIR=$(pwd)/storage
-mkdir -p $DATADIR
-setfacl -m user:8675309:rwx $DATADIR
+. $HOME/bin/docker-static-ip $SELF
 
 PG=vault-site-db
-PGIP=$(lxc list | grep $PG | awk '{print $6}')
+PGIP=$(docker-find-ip $PG)
 
 CMD="docker run --rm --user tomcat:tomcat \
     --network=$DOCKER_NET --ip=$DOCKER_STATIC_IP \
     --add-host $HAP:$HAPIP \
     --add-host $PG:$PGIP \
     --volume=$(pwd)/config:/config:ro \
-    --volume=${DATADIR}:/data:rw \
     --name $SELF $IMG"
 
 echo $CMD

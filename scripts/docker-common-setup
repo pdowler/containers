@@ -13,8 +13,8 @@ rsync -avuc $CF/ config/
 
 
 echo "local haproxy setup..."
-HAP=$(grep haproxy /etc/hosts | awk '{print $2}')
-HAPIP=$(grep haproxy /etc/hosts | awk '{print $1}')
+HAP=$(grep haproxy /etc/hosts | grep -v haproxy.local | awk '{print $2}')
+HAPIP=$(grep haproxy /etc/hosts | grep -v haproxy.local | awk '{print $1}')
 echo "$HAP -> $HAPIP"
 export HAP HAPIP
 
