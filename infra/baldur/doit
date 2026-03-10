@@ -10,6 +10,7 @@ IMG="baldur:latest"
 CMD="docker run --rm --user tomcat:tomcat \
 	--network=$DOCKER_NET --ip=$DOCKER_STATIC_IP \
 	--add-host $HAP:$HAPIP \
+	--env tomcat.connector.proxyName=$HAP \
 	--volume=$(pwd)/config:/config:ro \
         --name $SELF $IMG"
 
