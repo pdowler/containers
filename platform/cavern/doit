@@ -2,7 +2,7 @@
 
 SELF=$(basename $(pwd))
 IMG=cavern:latest
-#IMG="images.opencadc.org/platform/cavern:0.7.5"
+#IMG="images.opencadc.org/platform/cavern:0.9.2"
 
 . $HOME/bin/docker-common-setup
 
@@ -12,12 +12,12 @@ echo "append posixmapper config..."
 echo "http://www.opencadc.org/std/posix#group-mapping-0.1 = ivo://cadc.nrc.ca/gms" >> config/cadc-registry.properties
 echo "http://www.opencadc.org/std/posix#user-mapping-0.1 = ivo://cadc.nrc.ca/gms" >> config/cadc-registry.properties
 
-DATADIR=/data/local/cavern
-if [ ! -d $DATADIR ]; then
-    echo "not found: DATADIR=$DATADIR"
-    exit 1
-fi
-EXTRADIR=/data/local/junk
+DATADIR=$(pwd)/storage
+mkdir -p $DATADIR
+setfacl -m user:8675309:rwx $DATADIR
+EXTRADIR=$(pwd)/extra
+mkdir -p $EXTRADIR
+setfacl -m user:8675309:rwx $DATADIR
 
 PG=caverndb
 PGIP=$(docker-find-ip $PG)
@@ -26,6 +26,7 @@ PGIP=$(docker-find-ip $PG)
 CMD="docker run --rm --user root:root \
     --network=$DOCKER_NET --ip=$DOCKER_STATIC_IP \
     --add-host $HAP:$HAPIP \
+    --env tomcat.connector.proxyName=$HAP \
     --add-host $PG:$PGIP \
     --volume=$(pwd)/config:/config:ro \
     --volume=${DATADIR}:/data:rw \

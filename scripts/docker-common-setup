@@ -10,8 +10,6 @@ else
 fi
 rsync -avuc $CF/ config/
 
-
-
 echo "local haproxy setup..."
 HAP=$(grep haproxy /etc/hosts | grep -v haproxy.local | awk '{print $2}')
 HAPIP=$(grep haproxy /etc/hosts | grep -v haproxy.local | awk '{print $1}')

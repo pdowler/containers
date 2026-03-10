@@ -2,7 +2,7 @@
 
 SELF=$(basename $(pwd))
 IMG=vault:latest
-#IMG="images.opencadc.org/storage-inventory/minoc:1.0.7"
+#IMG="images.opencadc.org/storage-inventory/vault:1.0.16"
 
 . $HOME/bin/docker-common-setup
 
@@ -14,6 +14,7 @@ PGIP=$(docker-find-ip $PG)
 CMD="docker run --rm --user tomcat:tomcat \
     --network=$DOCKER_NET --ip=$DOCKER_STATIC_IP \
     --add-host $HAP:$HAPIP \
+    --env tomcat.connector.proxyName=$HAP \
     --add-host $PG:$PGIP \
     --volume=$(pwd)/config:/config:ro \
     --name $SELF $IMG"
