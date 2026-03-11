@@ -1,0 +1,58 @@
+#!/bin/bash
+
+SELF=tantar
+IMG=tantar:si11
+#IMG="images.opencadc.org/storage-inventory/tantar:1.0.7"
+
+## argument to specify storage adapter impl
+SA=$1
+if [ -z "$SA" ]; then
+  echo "usage: $0 [fs|swift] (default: fs)"
+  SA=fs
+fi
+
+. $HOME/bin/docker-common-setup
+
+. $HOME/bin/docker-static-ip $SELF
+
+FSMOUNT=""
+
+if [ "$SA" == "fs" ]; then
+   \cp config/tantar.properties.fs config/tantar.properties
+   DATADIR=$(pwd)/storage
+   mkdir -p $DATADIR
+   setfacl -m user:8675309:rwx $DATADIR
+   FSMOUNT="--volume=${DATADIR}:/data:rw"
+   
+elif [ "$SA" == "swift" ]; then
+   \cp config/tantar.properties.swift config/tantar.properties
+   \cp $HOME/config/cadc-storage-adapter-swift.properties config/
+   chmod 664 config/cadc-storage-adapter-swift.properties
+else
+   echo "invalid storage adapter arg: $SA"
+   echo "usage: $0 [fs|swift] (default: fs)"
+   exit  
+fi
+
+echo
+grep StorageAdapter config/tantar.properties
+echo
+
+DATADIR=$(pwd)/storage
+mkdir -p $DATADIR
+setfacl -m user:8675309:rwx $DATADIR
+
+PG=pg15-minoc
+PGIP=$(docker-find-ip $PG)
+
+CMD="docker run --rm --user opencadc:opencadc \
+    --network=$DOCKER_NET --ip=$DOCKER_STATIC_IP \
+    --add-host $HAP:$HAPIP \
+    --add-host $PG:$PGIP \
+    --volume=$(pwd)/config:/config:ro \
+    $FSMOUNT \
+    --name $SELF $IMG"
+
+echo $CMD
+exec $CMD
+

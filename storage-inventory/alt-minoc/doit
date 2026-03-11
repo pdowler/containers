@@ -1,18 +1,17 @@
 #!/bin/bash
 
 SELF=$(basename $(pwd))
-IMG=minoc:latest
+IMG=minoc:si11
 #IMG="images.opencadc.org/storage-inventory/minoc:1.0.7"
 
 . $HOME/bin/docker-common-setup
 
-\cp $HOME/config/cadc-storage-adapter-swift.properties config/
-chmod 664 config/cadc-storage-adapter-swift.properties
-echo "org.opencadc.inventory.storage.swift.SwiftStorageAdapter.segmentMinBytes = 10" >> config/cadc-storage-adapter-swift.properties
-
 . $HOME/bin/docker-static-ip $SELF
 
 \rm -f tomcat.log
+DATADIR=$(pwd)/storage
+mkdir -p $DATADIR
+setfacl -m user:8675309:rwx $DATADIR
 
 PG=pg15-minoc
 PGIP=$(docker-find-ip $PG)
@@ -23,6 +22,7 @@ CMD="docker run --rm --user tomcat:tomcat \
     --env tomcat.connector.proxyName=$HAP \
     --add-host $PG:$PGIP \
     --volume=$(pwd)/config:/config:ro \
+    --volume=${DATADIR}:/data:rw \
     --name $SELF $IMG"
 
 echo $CMD
