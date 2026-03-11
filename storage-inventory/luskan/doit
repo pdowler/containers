@@ -1,27 +1,22 @@
 #!/bin/bash
 
 SELF=$(basename $(pwd))
-IMG=luskan:latest
+IMG=luskan:si11
 
-. $HOME/work/bin/docker-static-ip $SELF
-echo "DOCKER_STATIC_IP: $DOCKER_STATIC_IP"
-echo "      DOCKER_NET: $DOCKER_NET"
+. $HOME/bin/docker-common-setup
 
-\cp $A/test-certificates/servops.pem config/cadcproxy.pem
+. $HOME/bin/docker-static-ip $SELF
+
 \cp $A/test-certificates/tmpops.pem config/tmpops.pem   
-
-\rm -f tomcat.log && touch tomcat.log
 
 PG=pg15test
 PGIP=$(grep $PG /etc/hosts | head -1 | awk '{print $1}')
-
-HAP=haproxy.cadc.dao.nrc.ca
-HAPIP=$(grep $HAP /etc/hosts | awk '{print $1}')
 
 CMD="docker run --rm --user tomcat:tomcat \
 	--network=$DOCKER_NET --ip=$DOCKER_STATIC_IP \
 	--add-host $PG:$PGIP \
 	--add-host $HAP:$HAPIP \
+	--env tomcat.connector.proxyName=$HAP \
         --volume=$(pwd)/config:/config:ro \
         --name $SELF $IMG"
 
