@@ -1,1 +1,4 @@
 storage
+config/minoc.properties
+config/cadc-storage-adapter-swift.properties
+

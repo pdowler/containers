@@ -4,9 +4,44 @@ SELF=$(basename $(pwd))
 IMG=minoc:si11
 #IMG="images.opencadc.org/storage-inventory/minoc:1.0.7"
 
+MF=""
+if [ "$1" == "-f" ]; then
+  MF=$1
+  shift
+fi
+
+## argument to specify storage adapter impl
+SA=$1
+if [ -z "$SA" ]; then
+  echo "usage: $0 [fs|swift] (default: fs)"
+  SA=fs
+fi
+
 . $HOME/bin/docker-common-setup
 
 . $HOME/bin/docker-static-ip $SELF
+
+FSMOUNT=""
+JDBC=""
+
+if [ "$SA" == "fs" ]; then
+   \cp config/minoc.properties.fs config/minoc.properties
+   DATADIR=$(pwd)/storage
+   mkdir -p $DATADIR
+   setfacl -m user:8675309:rwx $DATADIR
+   FSMOUNT="--volume=${DATADIR}:/data:rw"
+   JDBC="org.opencadc.minoc.inventory.url=jdbc:postgresql://pg15-minoc/cadctest1"
+elif [ "$SA" == "swift" ]; then
+   \cp $HOME/config/cadc-storage-adapter-swift.properties config/
+   chmod 664 config/cadc-storage-adapter-swift.properties
+   echo "org.opencadc.inventory.storage.swift.SwiftStorageAdapter.segmentMinBytes = 10" >> config/cadc-storage-adapter-swift.properties
+   \cp config/minoc.properties.swift config/minoc.properties
+   JDBC="org.opencadc.minoc.inventory.url=jdbc:postgresql://pg15-minoc/cadctest2"
+else
+   echo "invalid storage adapter arg: $SA"
+   echo "usage: $0 [fs|swift] (default: fs)"
+   exit  
+fi
 
 \rm -f tomcat.log
 
@@ -22,14 +57,21 @@ CMD="docker run --rm --user tomcat:tomcat \
     --add-host $HAP:$HAPIP \
     --env tomcat.connector.proxyName=$HAP \
     --add-host $PG:$PGIP \
+    --env $JDBC
     --volume=$(pwd)/config:/config:ro \
-    --volume=${DATADIR}:/data:rw \
+    $FSMOUNT \
     --name $SELF $IMG"
 
 echo $CMD
+echo
+echo "*******************************"
+echo "REMINDER: change the MINOC_TEST record in ~/.dbrc to match $JDBC"
+echo "*******************************"
+echo
+
 exec $CMD >& tomcat.log &
 
-if [ "$1" = "-f" ]; then
+if [ "$MF" = "-f" ]; then
     tail -100f tomcat.log
 fi
 
