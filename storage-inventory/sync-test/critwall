@@ -1,0 +1,31 @@
+#!/bin/bash
+
+SELF=critwall
+IMG=critwall:si11
+
+. $HOME/bin/docker-common-setup
+
+. $HOME/bin/docker-static-ip $SELF
+
+DATADIR=$(pwd)/storage
+mkdir -p $DATADIR
+setfacl -m user:8675309:rwx $DATADIR
+
+\cp ~/.ssl/pdowler.pem config/cadcproxy.pem
+
+PG=pg15-si-metasync
+PGIP=$(docker-find-ip $PG)
+
+CMD="docker run --rm --user opencadc:opencadc \
+	--network=$DOCKER_NET --ip=$DOCKER_STATIC_IP \
+	--add-host $HAP:$HAPIP \
+	--env tomcat.connector.proxyName=$HAP \
+	--add-host $PG:$PGIP \
+	--volume=$(pwd)/config:/config:ro \
+	--volume=$DATADIR:/data:rw \
+	--name  $SELF $IMG"
+
+echo $CMD
+
+$CMD
+
