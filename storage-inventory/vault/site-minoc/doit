@@ -2,7 +2,7 @@
 
 SELF=$(basename $(pwd))
 IMG=minoc:latest
-IMG="images.opencadc.org/storage-inventory/minoc:1.0.13"
+#IMG="images.opencadc.org/storage-inventory/minoc:1.0.13"
 
 . $HOME/bin/docker-common-setup
 

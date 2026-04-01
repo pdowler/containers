@@ -21,10 +21,12 @@ LOC="https://$HAP/reg"
 sed -i "s|LOCALREG|$LOC|g" config/cadc-registry.properties
 
 if [ "$1" == "nosecrets" ]; then
-  exit 0
+  echo "$0 : DONE"
+else
+  echo "import secrets..."
+  \cp ~/work/etc/RsaSignaturePub.key config/
+  \cp ~/work/test-certificates/servops.pem config/cadcproxy.pem
+  echo "$0 : DONE"
 fi
 
-echo "import secrets..."
-\cp ~/work/etc/RsaSignaturePub.key config/
-\cp ~/work/test-certificates/servops.pem config/cadcproxy.pem
 

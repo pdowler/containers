@@ -10,7 +10,7 @@ IMG=luskan:si11
 \cp $A/test-certificates/tmpops.pem config/tmpops.pem   
 
 PG=pg15test
-PGIP=$(grep $PG /etc/hosts | head -1 | awk '{print $1}')
+PGIP=$(docker-find-ip $PG)
 
 CMD="docker run --rm --user tomcat:tomcat \
 	--network=$DOCKER_NET --ip=$DOCKER_STATIC_IP \
