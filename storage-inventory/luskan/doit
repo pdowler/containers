@@ -1,7 +1,8 @@
 #!/bin/bash
 
 SELF=$(basename $(pwd))
-IMG=luskan:si11
+IMG=luskan:latest
+#IMG="images.opencadc.org/storage-inventory/luskan:1.1.0"
 
 . $HOME/bin/docker-common-setup
 

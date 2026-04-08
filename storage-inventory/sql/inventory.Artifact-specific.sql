@@ -1,0 +1,6 @@
+select uri,contentLastModified,lastModified
+from inventory.Artifact
+where uri in (
+'esa:EUCLID_DR1/EUC_MER_FINAL-CAT_TILE102044861-A05D8E_20250817T123327.894032Z_00.00.fits',
+'esa:EUCLID_DR1/EUC_MER_FINAL-CAT_TILE102019071-AB5A66_20250815T204941.816851Z_00.00.fits'
+)

@@ -1,7 +1,8 @@
 #!/bin/bash
 
 SELF=tantar
-IMG=tantar:si11
+IMG=tantar:latest
+#IMG="images.opencadc.org/storage-inventory/tantar:1.1.0"
 
 . $HOME/bin/docker-common-setup
 
@@ -19,7 +20,6 @@ PGIP=$(docker-find-ip $PG)
 CMD="docker run --rm --user opencadc:opencadc \
 	--network=$DOCKER_NET --ip=$DOCKER_STATIC_IP \
 	--add-host $HAP:$HAPIP \
-	--env tomcat.connector.proxyName=$HAP \
 	--add-host $PG:$PGIP \
 	--volume=$(pwd)/config:/config:ro \
 	--volume=$DATADIR:/data:rw \

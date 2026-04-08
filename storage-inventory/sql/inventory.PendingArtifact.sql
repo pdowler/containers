@@ -1,0 +1,2 @@
+select uri,contentLength,contentChecksum,contentLastModified,lastModified,id 
+from inventory.PendingArtifact
