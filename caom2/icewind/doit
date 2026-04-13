@@ -5,12 +5,12 @@ IMG=icewind:latest
 
 RUSER=opencadc:opencadc
 
-$HOME/bin/docker-common-setup
+. $HOME/bin/docker-common-setup
 
 \rm -f config/cadcproxy.pem
 \cp $HOME/.ssl/cadcproxy.pem config/
 
-PG=caom2db
+PG=pg15-argus
 PGIP=$(docker-find-ip $PG)
 
 CMD="docker run --rm --user $RUSER \
