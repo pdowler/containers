@@ -1,8 +1,8 @@
 #!/bin/bash
 
 SELF=$(basename $(pwd))
-IMG="youcat:openapi"
-#IMG="images.opencadc.org/core/youcat:0.9.2"
+IMG="youcat:latest"
+IMG="images.opencadc.org/core/youcat:0.9.5"
 
 . $HOME/bin/docker-common-setup
 
@@ -16,6 +16,7 @@ PGIP=$(docker-find-ip $PG)
 CMD="docker run --rm --user tomcat:tomcat \
 	--network=$DOCKER_NET --ip=$DOCKER_STATIC_IP \
 	--add-host $HAP:$HAPIP \
+        --env tomcat.connector.proxyName=$HAP \
         --add-host $PG:$PGIP \
 	--volume=$(pwd)/config:/config:ro \
         --name $SELF $IMG"

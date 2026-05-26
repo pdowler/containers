@@ -2,14 +2,11 @@
 
 SELF=$(basename $(pwd))
 IMG="youcat:latest"
-IMG="images.opencadc.org/core/youcat:0.8.0"
+#IMG="images.opencadc.org/core/youcat:0.9.5"
+
+. $HOME/bin/docker-common-setup SRC
 
 . $HOME/bin/docker-static-ip $SELF
-echo "DOCKER_STATIC_IP: $DOCKER_STATIC_IP"
-echo "      DOCKER_NET: $DOCKER_NET"
-
-HAP=haproxy.onfire.ca
-HAPIP=$(grep $HAP /etc/hosts | awk '{print $1}')
 
 PG=src-youcatdb
 PGIP=$(docker-find-ip $PG)
@@ -17,6 +14,7 @@ PGIP=$(docker-find-ip $PG)
 CMD="docker run --rm --user tomcat:tomcat \
 	--network=$DOCKER_NET --ip=$DOCKER_STATIC_IP \
 	--add-host $HAP:$HAPIP \
+        --env tomcat.connector.proxyName=$HAP \
         --add-host $PG:$PGIP \
 	--volume=$(pwd)/config:/config:ro \
         --name $SELF $IMG"

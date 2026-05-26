@@ -1,0 +1,28 @@
+#!/bin/bash
+
+SELF=$(basename $(pwd))
+IMG=sia:latest
+
+. $HOME/bin/docker-common-setup
+\cp $HOME/work/test-certificates/tmpops.pem config/
+
+. $HOME/bin/docker-static-ip $SELF
+
+PG=pg15-argus
+PGIP=$(docker-find-ip $PG)
+
+CMD="docker run --rm --user tomcat:tomcat \
+    --network=$DOCKER_NET --ip=$DOCKER_STATIC_IP \
+    --add-host $HAP:$HAPIP \
+    --add-host $PG:$PGIP \
+    --volume=$(pwd)/config:/config:ro \
+    --name $SELF $IMG"
+
+echo $CMD
+
+sudo $CMD >& tomcat.log &
+
+if [ "$1" = "-f" ]; then
+    exec tail -100f tomcat.log
+fi
+
