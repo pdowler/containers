@@ -22,11 +22,13 @@ ivo://negotiation-test-site1 = https://PROXYNAME/minoc/capabilities
 ivo://negotiation-test-site2 = https://PROXYNAME/minoc/capabilities
 ivo://negotiation-test-site3 = https://PROXYNAME/alt/minoc/capabilities
 
+ivo://cadc.nrc.ca/data = https://PROXYNAME/data/capabilities
+
 ## minoc integration test setup copies files from production vault, so we need this:
-ivo://cadc.nrc.ca/vault = https://ws-cadc.canfar.net/vault/capabilities
+ivo://cadc.nrc.ca/vault = https://cadc-west-01.canfar.net/vault/capabilities
 # some integration tests use global for content
-ivo://cadc.nrc.ca/global/raven = https://ws.cadc-ccda.hia-iha.nrc-cnrc.gc.ca/raven/capabilities
-ivo://cadc.nrc.ca/global/luskan = https://ws.cadc-ccda.hia-iha.nrc-cnrc.gc.ca/luskan/capabilities
+ivo://cadc.nrc.ca/global/raven = https://cadc-west-01.canfar.net/raven/capabilities
+ivo://cadc.nrc.ca/global/luskan = https://cadc-west-01.canfar.net/luskan/capabilities
 
 ivo://opencadc.org/cred = https://PROXYNAME/cred/capabilities
 ivo://opencadc.org/cavern = https://PROXYNAME/cavern/capabilities

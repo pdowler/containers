@@ -3,24 +3,15 @@
 SELF=$(basename $(pwd))
 IMG=data:latest
 
-. $HOME/work/bin/docker-static-ip $SELF
-echo "DOCKER_STATIC_IP: $DOCKER_STATIC_IP"
-echo "      DOCKER_NET: $DOCKER_NET"
+. $HOME/bin/docker-common-setup
 
-cat $HOME/work/etc/RsaSignaturePub.key > /config/RsaSignaturePub.key
-cat $HOME/work/test-certificates/servops.pem > config/cadcproxy.pem
-   
-\rm -f tomcat.log
-
-HAP=haproxy.cadc.dao.nrc.ca
-HAPIP=$(grep $HAP /etc/hosts | awk '{print $1}')
+. $HOME/bin/docker-static-ip $SELF
 
 CMD="docker run --rm --user tomcat:tomcat \
     --network=$DOCKER_NET --ip=$DOCKER_STATIC_IP \
     --add-host $HAP:$HAPIP \
-    --add-host $PG:$PGIP \
+    --env tomcat.connector.proxyName=$HAP \
     --volume=$(pwd)/config:/config:ro \
-    --volume=${DATADIR}:/data:rw \
     --name $SELF $IMG"
 
 echo $CMD
