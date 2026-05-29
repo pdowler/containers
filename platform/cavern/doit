@@ -2,7 +2,7 @@
 
 SELF=$(basename $(pwd))
 IMG=cavern:latest
-#IMG="images.opencadc.org/platform/cavern:0.9.2"
+#IMG="images.opencadc.org/platform/cavern:0.10.0"
 
 . $HOME/bin/docker-common-setup
 

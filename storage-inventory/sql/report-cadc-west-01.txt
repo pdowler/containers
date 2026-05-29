@@ -1,0 +1,120 @@
+called as: tap-curl
+reg: get-resource-caps global/luskan
+auth: --cert /home/pdowler/.ssl/cadcproxy.pem
+tap: global/luskan
+endpoint: https://cadc-west-01.canfar.net/luskan/sync
+maxrec: 
+format: 
+query:
+select split_part(uri,'/',1) as namespace, num_copies() as ncopies, count(*) as num
+from inventory.Artifact
+group by namespace,ncopies order by namespace,ncopies
+--
+<?xml version="1.0" encoding="UTF-8"?>
+<VOTABLE xmlns="http://www.ivoa.net/xml/VOTable/v1.3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.4">
+  <RESOURCE type="results">
+    <INFO name="QUERY_STATUS" value="OK" />
+    <INFO name="QUERY_TIMESTAMP" value="2026-05-07T21:20:46.965" />
+    <INFO name="QUERY" value="select split_part(uri,'/',1) as namespace, num_copies() as ncopies, count(*) as num&#xA;from inventory.Artifact&#xA;group by namespace,ncopies order by namespace,ncopies" />
+    <TABLE>
+      <FIELD name="namespace" datatype="char" arraysize="*" />
+      <FIELD name="ncopies" datatype="int" />
+      <FIELD name="num" datatype="long" />
+      <DATA>
+        <TABLEDATA>
+<TR><TD>astron:LOTSS</TD><TD>1</TD><TD>1682</TD></TR>
+<TR><TD>cadc:AICO</TD><TD>3</TD><TD>36</TD></TR>
+<TR><TD>cadc:APERO</TD><TD>1</TD><TD>12</TD></TR>
+<TR><TD>cadc:APERO</TD><TD>2</TD><TD>45</TD></TR>
+<TR><TD>cadc:BLAST</TD><TD>3</TD><TD>407</TD></TR>
+<TR><TD>cadc:BRITE-Constellation</TD><TD>3</TD><TD>12999</TD></TR>
+<TR><TD>cadc:CFHT</TD><TD>1</TD><TD>61292</TD></TR>
+<TR><TD>cadc:CFHT</TD><TD>2</TD><TD>37761</TD></TR>
+<TR><TD>cadc:CFHT</TD><TD>3</TD><TD>23362663</TD></TR>
+<TR><TD>cadc:CFHTSG</TD><TD>3</TD><TD>1280888</TD></TR>
+<TR><TD>cadc:CFHTTERAPIX</TD><TD>2</TD><TD>35100</TD></TR>
+<TR><TD>cadc:CGPS</TD><TD>3</TD><TD>3338</TD></TR>
+<TR><TD>cadc:CGRT</TD><TD>3</TD><TD>6054</TD></TR>
+<TR><TD>cadc:CHIMEFRB</TD><TD>1</TD><TD>54499994</TD></TR>
+<TR><TD>cadc:CXO</TD><TD>3</TD><TD>6249</TD></TR>
+<TR><TD>cadc:DAO</TD><TD>1</TD><TD>3</TD></TR>
+<TR><TD>cadc:DAO</TD><TD>2</TD><TD>2643</TD></TR>
+<TR><TD>cadc:DAO</TD><TD>3</TD><TD>4847060</TD></TR>
+<TR><TD>cadc:DAOCADC</TD><TD>3</TD><TD>76491</TD></TR>
+<TR><TD>cadc:DAOPLATES</TD><TD>3</TD><TD>4179</TD></TR>
+<TR><TD>cadc:DRAO</TD><TD>3</TD><TD>3373</TD></TR>
+<TR><TD>cadc:DSS</TD><TD>3</TD><TD>1211218</TD></TR>
+<TR><TD>cadc:FIRST</TD><TD>3</TD><TD>29153</TD></TR>
+<TR><TD>cadc:FUSE</TD><TD>3</TD><TD>6103762</TD></TR>
+<TR><TD>cadc:GEMINI</TD><TD>1</TD><TD>40</TD></TR>
+<TR><TD>cadc:GEMINI</TD><TD>2</TD><TD>4658568</TD></TR>
+<TR><TD>cadc:GEMINICADC</TD><TD>3</TD><TD>31857</TD></TR>
+<TR><TD>cadc:GSKY</TD><TD>3</TD><TD>2687641</TD></TR>
+<TR><TD>cadc:HSTHLA</TD><TD>2</TD><TD>5813372</TD></TR>
+<TR><TD>cadc:IRIS</TD><TD>3</TD><TD>2580</TD></TR>
+<TR><TD>cadc:JCMT</TD><TD>2</TD><TD>2</TD></TR>
+<TR><TD>cadc:JCMT</TD><TD>3</TD><TD>26363940</TD></TR>
+<TR><TD>cadc:JCMTLS</TD><TD>3</TD><TD>315</TD></TR>
+<TR><TD>cadc:JCMTSL</TD><TD>3</TD><TD>15</TD></TR>
+<TR><TD>cadc:JCMTST</TD><TD>3</TD><TD>306</TD></TR>
+<TR><TD>cadc:MACHO</TD><TD>2</TD><TD>240554</TD></TR>
+<TR><TD>cadc:MOST</TD><TD>3</TD><TD>23405</TD></TR>
+<TR><TD>cadc:NBALL</TD><TD>3</TD><TD>9</TD></TR>
+<TR><TD>cadc:NEOSSAT</TD><TD>1</TD><TD>249</TD></TR>
+<TR><TD>cadc:NEOSSAT</TD><TD>2</TD><TD>1992</TD></TR>
+<TR><TD>cadc:NEOSSAT</TD><TD>3</TD><TD>3119461</TD></TR>
+<TR><TD>cadc:NGVS</TD><TD>2</TD><TD>40126</TD></TR>
+<TR><TD>cadc:OMM</TD><TD>3</TD><TD>2368393</TD></TR>
+<TR><TD>cadc:PANDAS</TD><TD>3</TD><TD>2883</TD></TR>
+<TR><TD>cadc:POSSUM</TD><TD>2</TD><TD>2</TD></TR>
+<TR><TD>cadc:POSSUM</TD><TD>3</TD><TD>16798</TD></TR>
+<TR><TD>cadc:ROSAT</TD><TD>3</TD><TD>20208</TD></TR>
+<TR><TD>cadc:SCUBA-LC</TD><TD>2</TD><TD>11177</TD></TR>
+<TR><TD>cadc:SCUPOL</TD><TD>3</TD><TD>351</TD></TR>
+<TR><TD>cadc:SUBARUCADC</TD><TD>2</TD><TD>279480</TD></TR>
+<TR><TD>cadc:TAOSII</TD><TD>2</TD><TD>48</TD></TR>
+<TR><TD>cadc:TAOSII</TD><TD>3</TD><TD>4</TD></TR>
+<TR><TD>cadc:TULLY</TD><TD>3</TD><TD>305</TD></TR>
+<TR><TD>cadc:UKIRT</TD><TD>3</TD><TD>1399134</TD></TR>
+<TR><TD>cadc:VGPS</TD><TD>3</TD><TD>118</TD></TR>
+<TR><TD>cadc:VLASS</TD><TD>1</TD><TD>39</TD></TR>
+<TR><TD>cadc:VLASS</TD><TD>2</TD><TD>194</TD></TR>
+<TR><TD>cadc:VLASS</TD><TD>3</TD><TD>305140</TD></TR>
+<TR><TD>cadc:WALLABY</TD><TD>3</TD><TD>36421</TD></TR>
+<TR><TD>cadc:XDSS</TD><TD>3</TD><TD>6057539</TD></TR>
+<TR><TD>cadc:vault</TD><TD>1</TD><TD>932</TD></TR>
+<TR><TD>cadc:vault</TD><TD>2</TD><TD>239617905</TD></TR>
+<TR><TD>casda:RACS</TD><TD>3</TD><TD>799</TD></TR>
+<TR><TD>esa:EUCLID</TD><TD>1</TD><TD>19008</TD></TR>
+<TR><TD>esa:EUCLID_DR1</TD><TD>1</TD><TD>190188</TD></TR>
+<TR><TD>gemini:GEMINI</TD><TD>1</TD><TD>92</TD></TR>
+<TR><TD>gemini:GEMINI</TD><TD>2</TD><TD>9489970</TD></TR>
+<TR><TD>lsst:dp1</TD><TD>1</TD><TD>9901</TD></TR>
+<TR><TD>mast:HST</TD><TD>1</TD><TD>8</TD></TR>
+<TR><TD>mast:HST</TD><TD>2</TD><TD>27261382</TD></TR>
+<TR><TD>mast:HST</TD><TD>3</TD><TD>408</TD></TR>
+<TR><TD>mast:JWST</TD><TD>1</TD><TD>4</TD></TR>
+<TR><TD>mast:JWST</TD><TD>2</TD><TD>21112213</TD></TR>
+<TR><TD>mast:JWST</TD><TD>3</TD><TD>98</TD></TR>
+<TR><TD>nrao:VLASS</TD><TD>1</TD><TD>154</TD></TR>
+<TR><TD>nrao:VLASS</TD><TD>2</TD><TD>694</TD></TR>
+<TR><TD>nrao:VLASS</TD><TD>3</TD><TD>453936</TD></TR>
+<TR><TD>test:CADC</TD><TD>3</TD><TD>36</TD></TR>
+<TR><TD>test:DRAO</TD><TD>1</TD><TD>352279</TD></TR>
+<TR><TD>tmp:advancedsearch</TD><TD>1</TD><TD>3451</TD></TR>
+<TR><TD>tmp:ams</TD><TD>1</TD><TD>146</TD></TR>
+<TR><TD>tmp:ams-int-test</TD><TD>1</TD><TD>34</TD></TR>
+<TR><TD>tmp:argus</TD><TD>1</TD><TD>40300</TD></TR>
+<TR><TD>tmp:argus-int-test</TD><TD>1</TD><TD>106</TD></TR>
+<TR><TD>tmp:dss</TD><TD>1</TD><TD>77009</TD></TR>
+<TR><TD>tmp:global</TD><TD>1</TD><TD>577</TD></TR>
+<TR><TD>tmp:luskan</TD><TD>1</TD><TD>1166</TD></TR>
+<TR><TD>tmp:youcat</TD><TD>1</TD><TD>89913</TD></TR>
+<TR><TD>tmp:youcat-int-test</TD><TD>1</TD><TD>1117</TD></TR>
+<TR><TD>unam:TAOSII</TD><TD>1</TD><TD>1</TD></TR></TABLEDATA>
+      </DATA>
+    </TABLE>
+    <INFO name="placeholder" value="ignore" />
+  </RESOURCE>
+</VOTABLE>
+200

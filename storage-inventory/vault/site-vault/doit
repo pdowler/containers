@@ -2,7 +2,7 @@
 
 SELF=$(basename $(pwd))
 IMG=vault:latest
-#IMG="images.opencadc.org/storage-inventory/vault:1.0.16"
+#IMG="images.opencadc.org/storage-inventory/vault:1.1.1"
 
 . $HOME/bin/docker-common-setup
 

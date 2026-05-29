@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vos:node xmlns:vos="http://www.ivoa.net/xml/VOSpace/v2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uri="vos://cadc.nrc.ca~vault/pdowler" xsi:type="vos:ContainerNode">
+  <vos:properties>
+    <vos:property uri="ivo://cadc.nrc.ca/vospace/core#inheritPermissions">false</vos:property>
+    <vos:property uri="ivo://ivoa.net/vospace/core#creator" readOnly="true">pdowler</vos:property>
+    <vos:property uri="ivo://ivoa.net/vospace/core#date" readOnly="true">2026-05-01T18:45:48.990</vos:property>
+    <vos:property uri="ivo://ivoa.net/vospace/core#ispublic">true</vos:property>
+    <vos:property uri="ivo://ivoa.net/vospace/core#quota" readOnly="true">274877906944</vos:property>
+  </vos:properties>
+  <vos:nodes>
+    <vos:node uri="vos://cadc.nrc.ca~vault/pdowler/SRCnet" xsi:type="vos:ContainerNode">
+      <vos:properties>
+        <vos:property uri="ivo://cadc.nrc.ca/vospace/core#inheritPermissions">true</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#creator" readOnly="true">pdowler</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#date" readOnly="true">2023-05-26T16:06:01.367</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#ispublic">true</vos:property>
+      </vos:properties>
+      <vos:nodes />
+    </vos:node>
+    <vos:node uri="vos://cadc.nrc.ca~vault/pdowler/adass" xsi:type="vos:ContainerNode">
+      <vos:properties>
+        <vos:property uri="ivo://cadc.nrc.ca/vospace/core#inheritPermissions">true</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#creator" readOnly="true">pdowler</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#date" readOnly="true">2018-11-06T17:00:05.953</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#ispublic">true</vos:property>
+      </vos:properties>
+      <vos:nodes />
+    </vos:node>
+    <vos:node uri="vos://cadc.nrc.ca~vault/pdowler/caom2" xsi:type="vos:ContainerNode">
+      <vos:properties>
+        <vos:property uri="ivo://cadc.nrc.ca/vospace/core#inheritPermissions">true</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#creator" readOnly="true">pdowler</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#date" readOnly="true">2024-03-28T00:28:18.223</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#ispublic">true</vos:property>
+      </vos:properties>
+      <vos:nodes />
+    </vos:node>
+    <vos:node uri="vos://cadc.nrc.ca~vault/pdowler/foo.txt" xsi:type="vos:DataNode" busy="false">
+      <vos:properties>
+        <vos:property uri="ivo://ivoa.net/vospace/core#creator" readOnly="true">pdowler</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#date" readOnly="true">2025-09-26T17:14:54.971</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#length" readOnly="true">0</vos:property>
+      </vos:properties>
+      <vos:accepts />
+      <vos:provides />
+    </vos:node>
+    <vos:node uri="vos://cadc.nrc.ca~vault/pdowler/inaf" xsi:type="vos:ContainerNode">
+      <vos:properties>
+        <vos:property uri="ivo://cadc.nrc.ca/vospace/core#inheritPermissions">true</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#creator" readOnly="true">pdowler</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#date" readOnly="true">2024-03-28T00:22:30.410</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#ispublic">false</vos:property>
+      </vos:properties>
+      <vos:nodes />
+    </vos:node>
+    <vos:node uri="vos://cadc.nrc.ca~vault/pdowler/ivoa" xsi:type="vos:ContainerNode">
+      <vos:properties>
+        <vos:property uri="ivo://cadc.nrc.ca/vospace/core#inheritPermissions">true</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#creator" readOnly="true">pdowler</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#date" readOnly="true">2022-10-13T22:36:01.083</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#ispublic">true</vos:property>
+      </vos:properties>
+      <vos:nodes />
+    </vos:node>
+    <vos:node uri="vos://cadc.nrc.ca~vault/pdowler/junk" xsi:type="vos:ContainerNode">
+      <vos:properties>
+        <vos:property uri="ivo://cadc.nrc.ca/vospace/core#inheritPermissions">true</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#creator" readOnly="true">pdowler</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#date" readOnly="true">2023-06-13T20:01:34.000</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#groupread">ivo://cadc.nrc.ca/gms?CADC ivo://cadc.nrc.ca/gms?CAOM2</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#ispublic">true</vos:property>
+      </vos:properties>
+      <vos:nodes />
+    </vos:node>
+    <vos:node uri="vos://cadc.nrc.ca~vault/pdowler/lxd" xsi:type="vos:ContainerNode">
+      <vos:properties>
+        <vos:property uri="ivo://cadc.nrc.ca/vospace/core#inheritPermissions">true</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#creator" readOnly="true">pdowler</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#date" readOnly="true">2024-03-28T00:29:49.843</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#ispublic">false</vos:property>
+      </vos:properties>
+      <vos:nodes />
+    </vos:node>
+    <vos:node uri="vos://cadc.nrc.ca~vault/pdowler/private" xsi:type="vos:ContainerNode">
+      <vos:properties>
+        <vos:property uri="ivo://cadc.nrc.ca/vospace/core#inheritPermissions">true</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#creator" readOnly="true">pdowler</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#date" readOnly="true">2020-02-05T17:51:01.437</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#ispublic">false</vos:property>
+      </vos:properties>
+      <vos:nodes />
+    </vos:node>
+    <vos:node uri="vos://cadc.nrc.ca~vault/pdowler/rpms" xsi:type="vos:ContainerNode">
+      <vos:properties>
+        <vos:property uri="ivo://cadc.nrc.ca/vospace/core#inheritPermissions">true</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#creator" readOnly="true">pdowler</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#date" readOnly="true">2023-12-01T16:06:01.193</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#ispublic">true</vos:property>
+      </vos:properties>
+      <vos:nodes />
+    </vos:node>
+    <vos:node uri="vos://cadc.nrc.ca~vault/pdowler/software" xsi:type="vos:ContainerNode">
+      <vos:properties>
+        <vos:property uri="ivo://cadc.nrc.ca/vospace/core#inheritPermissions">false</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#creator" readOnly="true">pdowler</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#date" readOnly="true">2025-01-24T00:47:39.253</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#ispublic">true</vos:property>
+      </vos:properties>
+      <vos:nodes />
+    </vos:node>
+    <vos:node uri="vos://cadc.nrc.ca~vault/pdowler/spyglass.txt" xsi:type="vos:DataNode" busy="false">
+      <vos:properties>
+        <vos:property uri="ivo://ivoa.net/vospace/core#creator" readOnly="true">pdowler</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#date" readOnly="true">2025-10-08T21:23:11.197</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#length" readOnly="true">0</vos:property>
+      </vos:properties>
+      <vos:accepts />
+      <vos:provides />
+    </vos:node>
+    <vos:node uri="vos://cadc.nrc.ca~vault/pdowler/stuff" xsi:type="vos:ContainerNode">
+      <vos:properties>
+        <vos:property uri="ivo://cadc.nrc.ca/vospace/core#inheritPermissions">true</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#creator" readOnly="true">pdowler</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#date" readOnly="true">2020-02-05T17:36:01.917</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#groupread">ivo://cadc.nrc.ca/gms?caom2TestGroupRead</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#ispublic">false</vos:property>
+      </vos:properties>
+      <vos:nodes />
+    </vos:node>
+    <vos:node uri="vos://cadc.nrc.ca~vault/pdowler/tap-math.vot" xsi:type="vos:DataNode" busy="false">
+      <vos:properties>
+        <vos:property uri="ivo://ivoa.net/vospace/core#creator" readOnly="true">pdowler</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#date" readOnly="true">2024-11-08T23:29:23.413</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#ispublic">false</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#length" readOnly="true">1910</vos:property>
+      </vos:properties>
+      <vos:accepts />
+      <vos:provides />
+    </vos:node>
+    <vos:node uri="vos://cadc.nrc.ca~vault/pdowler/test" xsi:type="vos:ContainerNode">
+      <vos:properties>
+        <vos:property uri="ivo://cadc.nrc.ca/vospace/core#inheritPermissions">true</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#creator" readOnly="true">pdowler</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#date" readOnly="true">2024-03-28T00:30:28.673</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#ispublic">true</vos:property>
+      </vos:properties>
+      <vos:nodes />
+    </vos:node>
+    <vos:node uri="vos://cadc.nrc.ca~vault/pdowler/travel" xsi:type="vos:ContainerNode">
+      <vos:properties>
+        <vos:property uri="ivo://cadc.nrc.ca/vospace/core#inheritPermissions">true</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#creator" readOnly="true">pdowler</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#date" readOnly="true">2024-04-10T21:17:32.573</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#ispublic">false</vos:property>
+      </vos:properties>
+      <vos:nodes />
+    </vos:node>
+    <vos:node uri="vos://cadc.nrc.ca~vault/pdowler/vosi-table-ext.xml" xsi:type="vos:DataNode" busy="false">
+      <vos:properties>
+        <vos:property uri="ivo://ivoa.net/vospace/core#creator" readOnly="true">pdowler</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#date" readOnly="true">2024-12-10T18:27:08.836</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#ispublic">true</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#length" readOnly="true">9223</vos:property>
+      </vos:properties>
+      <vos:accepts />
+      <vos:provides />
+    </vos:node>
+    <vos:node uri="vos://cadc.nrc.ca~vault/pdowler/work" xsi:type="vos:ContainerNode">
+      <vos:properties>
+        <vos:property uri="ivo://cadc.nrc.ca/vospace/core#inheritPermissions">true</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#creator" readOnly="true">pdowler</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#date" readOnly="true">2024-04-09T23:14:12.064</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#groupread">ivo://cadc.nrc.ca/gms?pdd-private</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#groupwrite">ivo://cadc.nrc.ca/gms?pdd-private</vos:property>
+        <vos:property uri="ivo://ivoa.net/vospace/core#ispublic">false</vos:property>
+      </vos:properties>
+      <vos:nodes />
+    </vos:node>
+  </vos:nodes>
+</vos:node>

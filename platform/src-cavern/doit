@@ -2,28 +2,34 @@
 
 SELF=$(basename $(pwd))
 IMG=cavern:latest
-IMG="images.opencadc.org/platform/cavern:0.8.2"
+#IMG="images.opencadc.org/platform/cavern:0.10.0"
+
+\rm config/cadc-registry.properties
+
+. $HOME/bin/docker-common-setup SRC
 
 . $HOME/bin/docker-static-ip $SELF
-echo "DOCKER_STATIC_IP: $DOCKER_STATIC_IP"
-echo "      DOCKER_NET: $DOCKER_NET"
 
-DATADIR=/data/local/src-cavern
-if [ ! -d $DATADIR ]; then
-    echo "not found: DATADIR=$DATADIR"
-    exit 1
-fi
+echo "append posixmapper config..."
+echo "http://www.opencadc.org/std/posix#group-mapping-0.1 = ivo://opencadc.org/src/posix-mapper" >> config/cadc-registry.properties
+echo "http://www.opencadc.org/std/posix#user-mapping-0.1 = ivo://opencadc.org/src/posix-mapper" >> config/cadc-registry.properties
 
-HAP=haproxy.cadc.dao.nrc.ca
-HAPIP=$(grep $HAP /etc/hosts | awk '{print $1}')
+DATADIR=$(pwd)/storage
+mkdir -p $DATADIR
+setfacl -m user:8675309:rwx $DATADIR
+EXTRADIR=$(pwd)/extra
+mkdir -p $EXTRADIR
+setfacl -m user:8675309:rwx $DATADIR
 
-PG=srcnodedb
+## use the uws schema in posix-mapper db
+PG=srcposixdb
 PGIP=$(docker-find-ip $PG)
 
 ## YES: runs as root internally
 CMD="docker run --rm --user root:root \
     --network=$DOCKER_NET --ip=$DOCKER_STATIC_IP \
     --add-host $HAP:$HAPIP \
+    --env tomcat.connector.proxyName=$HAP \
     --add-host $PG:$PGIP \
     --volume=$(pwd)/config:/config:ro \
     --volume=${DATADIR}:/data:rw \

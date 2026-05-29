@@ -42,6 +42,8 @@ ivo://opencadc.org/argus = https://PROXYNAME/argus/capabilities
 ivo://opencadc.org/bifrost = https://PROXYNAME/bifrost/capabilities
 ivo://opencadc.org/dap = https://PROXYNAME/dap/capabilities
 ivo://opencadc.org/sia = https://PROXYNAME/sia/capabilities
+
+ivo://cadc.nrc.ca/sia = https://PROXYNAME/sia/capabilities
 ivo://cadc.nrc.ca/caom2ops = https://PROXYNAME/caom2ops/capabilities
 
 ivo://cadc.nrc.ca/sc2tap = https://PROXYNAME/argus/capabilities

@@ -2,13 +2,13 @@
 
 BASE=$(git rev-parse --show-toplevel)
 
-echo "import common config..."
 if [[ "$1" == "SRC" ]]; then
   CF=$BASE/src-config
 else
   CF=$BASE/config
 fi
-rsync -avuc $CF/ config/
+echo "import common config from $CF ..."
+\cp -v -r $CF/* config/
 
 echo "local haproxy setup..."
 HAP=$(grep haproxy /etc/hosts | grep -v haproxy.local | awk '{print $2}')
@@ -20,7 +20,7 @@ echo "adding local reg..."
 LOC="https://$HAP/reg"
 sed -i "s|LOCALREG|$LOC|g" config/cadc-registry.properties
 
-if [ "$1" == "nosecrets" ]; then
+if [[ "$1" == "nosecrets" ]]; then
   echo "$0 : DONE"
 else
   echo "import secrets..."

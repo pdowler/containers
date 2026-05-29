@@ -1,1 +1,1 @@
-select count(*) from inventory.Artifact
+select max(lastModified), count(*) from inventory.Artifact

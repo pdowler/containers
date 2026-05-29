@@ -20,7 +20,7 @@ CMD="docker run --rm --user tomcat:tomcat \
 
 echo $CMD
 
-sudo $CMD >& tomcat.log &
+$CMD >& tomcat.log &
 
 if [ "$1" = "-f" ]; then
     exec tail -100f tomcat.log
