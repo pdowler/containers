@@ -1,20 +1,21 @@
 #!/bin/bash
 
 SELF=$(basename $(pwd))
-IMG=icewind:latest
-
-RUSER=opencadc:opencadc
+IMG=caom2-artifact-discover:latest
 
 . $HOME/bin/docker-common-setup
+
+. $HOME/bin/docker-static-ip $SELF
 
 \rm -f config/cadcproxy.pem
 \cp $HOME/.ssl/cadcproxy.pem config/
 
-PG=pg15-argus
+PG=caom2syncdb
 PGIP=$(docker-find-ip $PG)
 
-CMD="docker run --rm --user $RUSER \
+CMD="docker run --rm --user opencadc:opencadc \
 	--add-host $PG:$PGIP \
+	--add-host $HAP:$HAPIP \
 	--volume=$(pwd)/config:/config:ro \
 	--name  $SELF $IMG"
 

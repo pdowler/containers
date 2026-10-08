@@ -13,7 +13,10 @@ cat config/reg-resource-caps.base | sed "s/PROXYNAME/$HAP/g" > config/reg-resour
 grep 'ivo://opencadc.org/reg' config/reg-resource-caps.properties
 echo "..."
 
-CMD="docker run --rm --user tomcat:tomcat \
+RESTART="--rm"
+#RESTART="--restart always"
+
+CMD="docker run $EXPOSE $RESTART --user tomcat:tomcat \
 	--network=$DOCKER_NET --ip=$DOCKER_STATIC_IP \
 	--add-host $HAP:$HAPIP \
 	--env tomcat.connector.proxyName=$HAP \
