@@ -1,0 +1,26 @@
+#!/bin/bash
+
+SELF=eos-minoc
+IMG=minoc:eos
+#IMG="images.opencadc.org/storage-inventory/tantar:1.0.7"
+
+. $HOME/bin/docker-common-setup
+
+. $HOME/bin/docker-static-ip $SELF
+
+\cp $HOME/config/cadc-storage-adapter-eos.properties config
+chmod 664 config/cadc-storage-adapter-eos.properties
+
+PG=si-eos
+PGIP=$(docker-find-ip $PG)
+
+CMD="docker run --rm --user tomcat:tomcat \
+    --network=$DOCKER_NET --ip=$DOCKER_STATIC_IP \
+    --add-host $HAP:$HAPIP \
+    --add-host $PG:$PGIP \
+    --volume=$(pwd)/config:/config:ro \
+    --name $SELF $IMG"
+
+echo $CMD
+exec $CMD
+

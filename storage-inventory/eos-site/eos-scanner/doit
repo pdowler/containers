@@ -1,0 +1,27 @@
+#!/bin/bash
+
+SELF=eos-scanner
+IMG=eos-scanner:eos
+
+\cp $HOME/config/cadc-storage-adapter-eos.properties config
+chmod 664 config/cadc-storage-adapter-eos.properties
+
+mkdir -p work
+setfacl -m user:8675309:rwx work
+
+PG=si-eos
+PGIP=$(docker-find-ip $PG)
+
+HAP=haproxy.cadc.dao.nrc.ca
+HAPIP=172.26.0.2
+
+CMD="docker run --rm --user opencadc:opencadc \
+	--add-host $HAP:$HAPIP \
+	--add-host $PG:$PGIP \
+	--volume=$(pwd)/config:/config:ro \
+	--volume=$(pwd)/work:/work:rw \
+	--name  $SELF $IMG"
+
+echo $CMD
+
+$CMD
