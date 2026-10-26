@@ -1,8 +1,8 @@
 #!/bin/bash
 
 SELF=$(basename $(pwd))
-IMG="youcat:vosi-permissions"
-#IMG="images.opencadc.org/core/youcat:0.9.5"
+IMG="youcat:tap-next"
+IMG="images.opencadc.org/core/youcat:0.10.2"
 
 . $HOME/bin/docker-common-setup
 

@@ -1,4 +1,6 @@
 cadc-log.properties
 cadc-vosi.properties
 cadc-registry.properties
-
+cadc-storage-adapter-eos.properties
+cadc-storage-adapter-swift.properties
+cadc-storage-adapter-s3.properties

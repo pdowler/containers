@@ -2,7 +2,7 @@
 
 SELF=fenwick
 IMG=fenwick:latest
-#IMG="images.opencadc.org/storage-inventory/fenwick:1.1.0"
+#IMG="images.opencadc.org/storage-inventory/fenwick:1.1.2"
 
 . $HOME/bin/docker-common-setup
 

@@ -1,8 +1,8 @@
 #!/bin/bash
 
 SELF=$(basename $(pwd))
-IMG=minoc:latest
-#IMG="images.opencadc.org/storage-inventory/minoc:1.0.7"
+IMG=minoc:eos
+#IMG="images.opencadc.org/storage-inventory/minoc:1.1.3"
 
 MF=""
 if [ "$1" == "-f" ]; then

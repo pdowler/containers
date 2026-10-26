@@ -5,9 +5,9 @@ IMG=cred:latest
 
 . $HOME/bin/docker-common-setup
 
-\cp ~/work/etc/signcert.pem config/
+\cp ~/work/etc/dev-signing-cert.pem config/signcert.pem
 
-. $HOME/work/bin/docker-static-ip $SELF
+. $HOME/bin/docker-static-ip $SELF
 
 CMD="docker run --rm --user tomcat:tomcat \
 	--network=$DOCKER_NET --ip=$DOCKER_STATIC_IP \

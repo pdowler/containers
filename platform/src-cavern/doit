@@ -2,7 +2,7 @@
 
 SELF=$(basename $(pwd))
 IMG=cavern:latest
-#IMG="images.opencadc.org/platform/cavern:0.10.0"
+#IMG="images.opencadc.org/platform/cavern:0.10.2"
 
 \rm config/cadc-registry.properties
 

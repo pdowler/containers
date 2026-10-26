@@ -4,7 +4,6 @@ BASE=$(git rev-parse --show-toplevel)
 
 SELF=$(basename $(pwd))
 IMG="cadc-haproxy-dev:latest"
-IMG="images.opencadc.org/dev-only/cadc-haproxy-dev:1"
 
 . $HOME/bin/docker-static-ip $SELF
 
@@ -21,6 +20,6 @@ CMD="docker run --rm --user root:root $EXPOSE --network=$DOCKER_NET --ip=$DOCKER
         
 echo $CMD
 
-$CMD >& haproxy.log & 
+$CMD & 
 
 

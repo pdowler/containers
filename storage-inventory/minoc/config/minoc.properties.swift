@@ -1,5 +1,5 @@
 # service identity: DEV
-org.opencadc.minoc.resourceID=ivo://cadc.nrc.ca/alt/minoc
+org.opencadc.minoc.resourceID=ivo://cadc.nrc.ca/minoc
 
 # storage back end
 org.opencadc.inventory.storage.StorageAdapter=org.opencadc.inventory.storage.swift.SwiftStorageAdapter

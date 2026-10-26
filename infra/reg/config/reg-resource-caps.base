@@ -5,7 +5,19 @@
 ivo://opencadc.org/reg = https://PROXYNAME/reg/capabilities
 
 ## AAI
+## hybrid environment most of the time
+ivo://cadc.nrc.ca/cred = https://cadc-west-01.canfar.net/cred/capabilities
+ivo://cadc.nrc.ca/gms  = https://cadc-west-01.canfar.net/ac/capabilities
+ivo://cadc.nrc.ca/ums  = https://cadc-west-01.canfar.net/ac/capabilities
+
+#ivo://cadc.nrc.ca/cred = https://PROXYNAME/cred/capabilities
+#ivo://cadc.nrc.ca/gms  = https://PROXYNAME/ac/capabilities
+#ivo://cadc.nrc.ca/ums  = https://PROXYNAME/ac/capabilities
+
+# local testing
+ivo://opencadc.org/cred = https://PROXYNAME/cred/capabilities
 ivo://opencadc.org/gms = https://PROXYNAME/ac/capabilities
+ivo://opencadc.org/ums = https://PROXYNAME/ac/capabilities
 
 ## storage inventory
 ivo://opencadc.org/baldur = https://PROXYNAME/baldur/capabilities
@@ -15,7 +27,11 @@ ivo://opencadc.org/minoc = https://PROXYNAME/minoc/capabilities
 ivo://opencadc.org/alt/minoc = https://PROXYNAME/alt/minoc/capabilities
 ivo://opencadc.org/vault = https://PROXYNAME/site/vault/capabilities
 ivo://opencadc.org/site/minoc = https://PROXYNAME/site/minoc/capabilities
-ivo://opencadc.org/si11/luskan = https://PROXYNAME/si11/luskan/capabilities
+ivo://opencadc.org/sync-test/minoc = https://PROXYNAME/sync-test/minoc/capabilities
+ivo://opencadc.org/eos/minoc = https://PROXYNAME/eos/minoc/capabilities
+
+ivo://opencadc.org/global/luskan = https://PROXYNAME/global/luskan/capabilities
+ivo://opencadc.org/global/raven = https://PROXYNAME/global/raven/capabilities
 
 ## raven intTest support - 2 and 3 must be different services for test to work
 ivo://negotiation-test-site1 = https://PROXYNAME/minoc/capabilities
@@ -30,7 +46,6 @@ ivo://cadc.nrc.ca/vault = https://cadc-west-01.canfar.net/vault/capabilities
 ivo://cadc.nrc.ca/global/raven = https://cadc-west-01.canfar.net/raven/capabilities
 ivo://cadc.nrc.ca/global/luskan = https://cadc-west-01.canfar.net/luskan/capabilities
 
-ivo://opencadc.org/cred = https://PROXYNAME/cred/capabilities
 ivo://opencadc.org/cavern = https://PROXYNAME/cavern/capabilities
 ivo://opencadc.org/youcat = https://PROXYNAME/youcat/capabilities
 # currently needed by youcat integration test code:
@@ -54,6 +69,8 @@ ivo://cadc.nrc.ca/sc2meta = https://PROXYNAME/sc2meta/capabilities
 ivo://opencadc.org/caom25/torkeep = https://PROXYNAME/caom25/torkeep/capabilities
 ivo://opencadc.org/caom25/argus = https://PROXYNAME/caom25/argus/capabilities
 ivo://opencadc.org/caom25/bifrost = https://PROXYNAME/caom25/bifrost/capabilities
+ivo://skao.int/argus = https://science-metadata.srcnet.skao.int/argus/capabilities
+ivo://skao.int/torkeep = https://science-metadata.srcnet.skao.int/torkeep/capabilities
 
 ## OIDC testing using SRCNet IAM
 ivo://opencadc.org/src/cavern = https://PROXYNAME/src/cavern/capabilities
@@ -62,14 +79,6 @@ ivo://opencadc.org/src/youcat = https://PROXYNAME/src/youcat/capabilities
 ivo://opencadc.org/src/argus = https://PROXYNAME/src/argus/capabilities
 ivo://opencadc.org/src/bifrost = https://PROXYNAME/src/bifrost/capabilities
 ivo://opencadc.org/src/torkeep = https://PROXYNAME/src/torkeep/capabilities
-
-
-## hybrid environment most of the time
-# note rely on multiple reg in cadc-registry.properties works bug logs lots of WARN
-ivo://cadc.nrc.ca/gms = https://ws-cadc.canfar.net/ac/capabilities
-#ivo://cadc.nrc.ca/gms = https://PROXYNAME/ac/capabilities
-ivo://cadc.nrc.ca/cred = https://ws.cadc-ccda.hia-iha.nrc-cnrc.gc.ca/cred/capabilities
-#ivo://cadc.nrc.ca/cred = https://PROXYNAME/cred/capabilities
 
 ## external services I want to find
 ivo://skao.int/reg = https://spsrc27.iaa.csic.es/reg/capabilities
@@ -81,18 +90,18 @@ ivo://skao.int/sdmapi = https://software-discovery.srcnet.skao.int/api/capabilit
 ivo://skao.int/sdmtap = https://software-discovery.srcnet.skao.int/tap/capabilities
 
 ## local ams repo
-ivo://cadc.nrc.ca/ams = https://PROXYNAME/ams/capabilities
+#ivo://cadc.nrc.ca/ams = https://PROXYNAME/ams/capabilities
 ## ams tap service endpoints
-ivo://cadc.nrc.ca/ams/alma = https://PROXYNAME/ams/alma/capabilities
-ivo://cadc.nrc.ca/ams/cfht = https://PROXYNAME/ams/cfht/capabilities
-ivo://cadc.nrc.ca/ams/cirada = https://PROXYNAME/ams/cirada/capabilities
-ivo://cadc.nrc.ca/ams/dao = https://PROXYNAME/ams/dao/capabilities
-ivo://cadc.nrc.ca/ams/drao = https://PROXYNAME/ams/drao/capabilities
-ivo://cadc.nrc.ca/ams/eao = https://PROXYNAME/ams/eao/capabilities
-ivo://cadc.nrc.ca/ams/gemini = https://PROXYNAME/ams/gemini/capabilities
-ivo://cadc.nrc.ca/ams/ngvs = https://PROXYNAME/ams/ngvs/capabilities
-ivo://cadc.nrc.ca/ams/maq = https://PROXYNAME/ams/maq/capabilities
-ivo://cadc.nrc.ca/ams/mast = https://PROXYNAME/ams/mast/capabilities
-ivo://cadc.nrc.ca/ams/omm = https://PROXYNAME/ams/omm/capabilities
-ivo://cadc.nrc.ca/ams/shared = https://PROXYNAME/ams/shared/capabilities
+#ivo://cadc.nrc.ca/ams/alma = https://PROXYNAME/ams/alma/capabilities
+#ivo://cadc.nrc.ca/ams/cfht = https://PROXYNAME/ams/cfht/capabilities
+#ivo://cadc.nrc.ca/ams/cirada = https://PROXYNAME/ams/cirada/capabilities
+#ivo://cadc.nrc.ca/ams/dao = https://PROXYNAME/ams/dao/capabilities
+#ivo://cadc.nrc.ca/ams/drao = https://PROXYNAME/ams/drao/capabilities
+#ivo://cadc.nrc.ca/ams/eao = https://PROXYNAME/ams/eao/capabilities
+#ivo://cadc.nrc.ca/ams/gemini = https://PROXYNAME/ams/gemini/capabilities
+#ivo://cadc.nrc.ca/ams/ngvs = https://PROXYNAME/ams/ngvs/capabilities
+#ivo://cadc.nrc.ca/ams/maq = https://PROXYNAME/ams/maq/capabilities
+#ivo://cadc.nrc.ca/ams/mast = https://PROXYNAME/ams/mast/capabilities
+#ivo://cadc.nrc.ca/ams/omm = https://PROXYNAME/ams/omm/capabilities
+#ivo://cadc.nrc.ca/ams/shared = https://PROXYNAME/ams/shared/capabilities
 

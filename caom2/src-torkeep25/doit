@@ -2,7 +2,7 @@
 
 SELF=$(basename $(pwd))
 IMG=torkeep:caom25
-IMG="images.opencadc.org/caom2/torkeep:2.0-BETA-05"
+#IMG="images.opencadc.org/caom2/torkeep:2.0-BETA-09"
 
 . $HOME/bin/docker-common-setup SRC
 

@@ -14,10 +14,11 @@ PG=caom2syncdb
 PGIP=$(docker-find-ip $PG)
 
 CMD="docker run --rm --user opencadc:opencadc \
-	--add-host $PG:$PGIP \
-	--add-host $HAP:$HAPIP \
-	--volume=$(pwd)/config:/config:ro \
-	--name  $SELF $IMG"
+  --network=$DOCKER_NET --ip=$DOCKER_STATIC_IP \
+  --add-host $PG:$PGIP \
+  --add-host $HAP:$HAPIP \
+  --volume=$(pwd)/config:/config:ro \
+  --name  $SELF $IMG"
 
 echo $CMD
 

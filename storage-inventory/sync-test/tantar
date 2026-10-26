@@ -2,7 +2,7 @@
 
 SELF=tantar
 IMG=tantar:latest
-#IMG="images.opencadc.org/storage-inventory/tantar:1.1.0"
+IMG="images.opencadc.org/storage-inventory/tantar:1.1.0"
 
 . $HOME/bin/docker-common-setup
 

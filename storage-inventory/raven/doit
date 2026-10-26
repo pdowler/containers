@@ -8,7 +8,7 @@ IMG=raven:si11
 . $HOME/bin/docker-static-ip $SELF
 
 PG=pg15test
-PGIP=$(grep $PG /etc/hosts | grep -v '-' | awk '{print $1}')
+PGIP=$(docker-find-ip $PG)
 
 CMD="docker run --rm --user tomcat:tomcat \
     --network=$DOCKER_NET --ip=$DOCKER_STATIC_IP \

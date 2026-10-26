@@ -2,5 +2,5 @@
 
 SELF=$(basename $(pwd))
 
-docker container kill $SELF || exit
+docker kill $SELF
 

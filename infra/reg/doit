@@ -2,7 +2,7 @@
 
 SELF=$(basename $(pwd))
 IMG=reg:latest
-IMG="images.opencadc.org/core/reg:1.2.1"
+#IMG="images.opencadc.org/core/reg:1.2.1"
 
 . $HOME/bin/docker-common-setup
 
