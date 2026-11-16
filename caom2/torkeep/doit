@@ -2,7 +2,7 @@
 
 SELF=$(basename $(pwd))
 IMG=torkeep:latest
-IMG="images.opencadc.org/caom2/torkeep:0.1.6"
+#IMG="images.opencadc.org/caom2/torkeep:0.1.6"
 
 . $HOME/bin/docker-common-setup
 

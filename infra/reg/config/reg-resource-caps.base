@@ -60,6 +60,9 @@ ivo://opencadc.org/sia = https://PROXYNAME/sia/capabilities
 
 ivo://cadc.nrc.ca/sia = https://PROXYNAME/sia/capabilities
 ivo://cadc.nrc.ca/caom2ops = https://PROXYNAME/caom2ops/capabilities
+## hard coded in sia v1
+#ivo://cadc.nrc.ca/argus = https://PROXYNAME/argus/capabilities
+ivo://cadc.nrc.ca/argus = https://ws.cadc-ccda.hia-iha.nrc-cnrc.gc.ca/argus/capabilities
 
 ivo://cadc.nrc.ca/sc2tap = https://PROXYNAME/argus/capabilities
 ivo://cadc.nrc.ca/sc2meta = https://PROXYNAME/sc2meta/capabilities
@@ -90,18 +93,18 @@ ivo://skao.int/sdmapi = https://software-discovery.srcnet.skao.int/api/capabilit
 ivo://skao.int/sdmtap = https://software-discovery.srcnet.skao.int/tap/capabilities
 
 ## local ams repo
-#ivo://cadc.nrc.ca/ams = https://PROXYNAME/ams/capabilities
+ivo://cadc.nrc.ca/ams = https://PROXYNAME/ams/capabilities
 ## ams tap service endpoints
-#ivo://cadc.nrc.ca/ams/alma = https://PROXYNAME/ams/alma/capabilities
-#ivo://cadc.nrc.ca/ams/cfht = https://PROXYNAME/ams/cfht/capabilities
-#ivo://cadc.nrc.ca/ams/cirada = https://PROXYNAME/ams/cirada/capabilities
-#ivo://cadc.nrc.ca/ams/dao = https://PROXYNAME/ams/dao/capabilities
-#ivo://cadc.nrc.ca/ams/drao = https://PROXYNAME/ams/drao/capabilities
-#ivo://cadc.nrc.ca/ams/eao = https://PROXYNAME/ams/eao/capabilities
-#ivo://cadc.nrc.ca/ams/gemini = https://PROXYNAME/ams/gemini/capabilities
-#ivo://cadc.nrc.ca/ams/ngvs = https://PROXYNAME/ams/ngvs/capabilities
-#ivo://cadc.nrc.ca/ams/maq = https://PROXYNAME/ams/maq/capabilities
-#ivo://cadc.nrc.ca/ams/mast = https://PROXYNAME/ams/mast/capabilities
-#ivo://cadc.nrc.ca/ams/omm = https://PROXYNAME/ams/omm/capabilities
-#ivo://cadc.nrc.ca/ams/shared = https://PROXYNAME/ams/shared/capabilities
+ivo://cadc.nrc.ca/ams/alma = https://PROXYNAME/ams/alma/capabilities
+ivo://cadc.nrc.ca/ams/cfht = https://PROXYNAME/ams/cfht/capabilities
+ivo://cadc.nrc.ca/ams/cirada = https://PROXYNAME/ams/cirada/capabilities
+ivo://cadc.nrc.ca/ams/dao = https://PROXYNAME/ams/dao/capabilities
+ivo://cadc.nrc.ca/ams/drao = https://PROXYNAME/ams/drao/capabilities
+ivo://cadc.nrc.ca/ams/eao = https://PROXYNAME/ams/eao/capabilities
+ivo://cadc.nrc.ca/ams/gemini = https://PROXYNAME/ams/gemini/capabilities
+ivo://cadc.nrc.ca/ams/ngvs = https://PROXYNAME/ams/ngvs/capabilities
+ivo://cadc.nrc.ca/ams/maq = https://PROXYNAME/ams/maq/capabilities
+ivo://cadc.nrc.ca/ams/mast = https://PROXYNAME/ams/mast/capabilities
+ivo://cadc.nrc.ca/ams/omm = https://PROXYNAME/ams/omm/capabilities
+ivo://cadc.nrc.ca/ams/shared = https://PROXYNAME/ams/shared/capabilities
 
